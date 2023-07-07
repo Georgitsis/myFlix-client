@@ -1,7 +1,7 @@
 {
-  "name": "myflix-client",
+  "name": "myFlix-client",
   "version": "1.0.0",
-  "description": "The front-end of the myFlix protfolio project "
+  "description": "The front-end of the myFlix protfolio project ",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +14,13 @@
   "bugs": {
     "url": "https://github.com/PsychoBoyJAck83/myFlix-client/issues"
   },
-  "homepage": "https://github.com/PsychoBoyJAck83/myFlix-client#readme"
+  "homepage": "https://github.com/PsychoBoyJAck83/myFlix-client#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
+    "process": "^0.11.10"
+  }
 }
