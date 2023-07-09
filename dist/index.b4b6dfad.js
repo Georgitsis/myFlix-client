@@ -27311,50 +27311,13 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            id: 1,
-            title: "The Godfather",
-            imageUrl: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
-            description: "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
-            genre: {
-                name: "Crime"
-            },
-            director: {
-                name: "Francis Ford Coppola"
-            }
-        },
-        {
-            id: 2,
-            title: "Fight Club",
-            imageUrl: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
-            description: "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
-            genre: {
-                name: "Drama"
-            },
-            director: {
-                name: "David Fincher"
-            }
-        },
-        {
-            id: 3,
-            title: "Once Upon a Time... in Hollywood",
-            imageUrl: "https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_FMjpg_UX1000_.jpg",
-            description: "A faded television actor and his stunt double strive to achieve fame and success in the final years of Hollywood's Golden Age in 1969 Los Angeles.",
-            genre: {
-                name: "Comedy"
-            },
-            director: {
-                name: "Quentin Tarantino"
-            }
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     let [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 54,
+        lineNumber: 11,
         columnNumber: 12
     }, undefined);
     else if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27362,7 +27325,7 @@ const MainView = ()=>{
         setSelectedMovieToNull: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 14,
         columnNumber: 7
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27374,17 +27337,17 @@ const MainView = ()=>{
                 }
             }, movies.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 68,
+                lineNumber: 25,
                 columnNumber: 11
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 65,
+        lineNumber: 22,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "4FLSWZsj/EtGDSNGhuedTWKpMUg=");
+_s(MainView, "jzuc4/Y81KLA8pUTcmWNL/aPH2I=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
