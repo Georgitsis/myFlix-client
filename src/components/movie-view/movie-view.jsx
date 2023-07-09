@@ -27,3 +27,17 @@ export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
     </div>
   );
 };
+MovieView.propTypes = {
+  movieData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    description: PropTypes.string,
+    genre: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    director: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }).isRequired,
+  setSelectedMovieToNull: PropTypes.func.isRequired,
+};
