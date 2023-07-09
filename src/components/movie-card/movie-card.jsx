@@ -10,7 +10,7 @@ export const MovieCard = ({ movieData, onMovieCardClick }) => {
     </div>
   );
 };
-MovieCard.protoTypes = {
+MovieCard.propTypes = {
   movieData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
