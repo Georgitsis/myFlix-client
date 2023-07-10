@@ -1,12 +1,37 @@
 import { useState } from "react";
 
-export const SignupView = () => {
+export const SignUpView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+      email: email,
+      birthDate: birthday,
+    };
+
+    console.log(data);
+    fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      if (response.ok) {
+        alert("Signup successful");
+        window.location.reload();
+      } else {
+        alert("Signup failed");
+      }
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -17,7 +42,8 @@ export const SignupView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength="3"
+          minLength="6"
+          maxLength={"20"}
         />
       </label>
       <label>
@@ -27,6 +53,7 @@ export const SignupView = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          minLength={8}
         />
       </label>
       <label>

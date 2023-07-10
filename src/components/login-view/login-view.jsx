@@ -14,8 +14,11 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.user) onLoggedIn(data.user.Username, data.token);
-        else alert(data.message);
+        if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
+          onLoggedIn(data.user.Username, data.token);
+        } else alert(data.message);
       })
       .catch((error) => {
         console.log(error);
