@@ -27345,7 +27345,7 @@ const MainView = ()=>{
             setUser(username);
             setToken(token);
         //console.log("username: " + username);
-        //console.log("Token: " + token);
+        //console.log("Tokffen: " + token);
         },
         onSignUp: (_bool)=>{
             setSignUp(_bool);
@@ -27363,7 +27363,7 @@ const MainView = ()=>{
         columnNumber: 12
     }, undefined);
     else if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "The list is empty!"
+        children: "The liiiist is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 58,
@@ -28422,11 +28422,7 @@ const LoginView = ({ onLoggedIn, onSignUp })=>{
         event.preventDefault();
         fetch(`https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/login?Username=${username}&Password=${password}`, {
             method: "POST"
-        }).then((response)=>{
-            console.log(response);
-            response.json();
-        }).then((data)=>{
-            console.log(data);
+        }).then((response)=>response.json()).then((data)=>{
             if (data.user) onLoggedIn(data.user.Username, data.token);
             else alert(data.message);
         }).catch((error)=>{
@@ -28455,13 +28451,13 @@ const LoginView = ({ onLoggedIn, onSignUp })=>{
                                     d: true
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 38,
+                                    lineNumber: 34,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 36,
+                            lineNumber: 32,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28474,13 +28470,13 @@ const LoginView = ({ onLoggedIn, onSignUp })=>{
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 50,
+                                    lineNumber: 46,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 48,
+                            lineNumber: 44,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28488,18 +28484,18 @@ const LoginView = ({ onLoggedIn, onSignUp })=>{
                             children: "Login"
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 57,
+                            lineNumber: 53,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 35,
+                    lineNumber: 31,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 34,
+                lineNumber: 30,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -28508,18 +28504,18 @@ const LoginView = ({ onLoggedIn, onSignUp })=>{
                     children: "Sign Up"
                 }, void 0, false, {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 61,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 60,
+                lineNumber: 56,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 33,
+        lineNumber: 29,
         columnNumber: 5
     }, undefined);
 };

@@ -45,7 +45,7 @@ export const MainView = () => {
           setUser(username);
           setToken(token);
           //console.log("username: " + username);
-          //console.log("Token: " + token);
+          //console.log("Tokffen: " + token);
         }}
         onSignUp={(_bool) => {
           setSignUp(_bool);
@@ -55,7 +55,7 @@ export const MainView = () => {
   } else if (signUp) {
     return <div>SIGN UP</div>;
   } else if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return <div>The liiiist is empty!</div>;
   } else if (selectedMovie) {
     return (
       <MovieView
