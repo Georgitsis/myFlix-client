@@ -9,7 +9,9 @@ export const MainView = () => {
   let [selectedMovie, setSelectedMovie] = useState(null);
 
   const [user, setUser] = useState(null);
+  let [signUp, setSignUp] = useState(null);
 
+  //fetches a list of movies from the given url
   useEffect(() => {
     fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/movies")
       .then((response) => response.json())
@@ -29,11 +31,26 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+        console.log(signUp);
+        //console.log(user);
+        //console.log(selectedMovie);
       });
   });
 
-  if (!user) {
-    return <LoginView />;
+  if (!user && !signUp) {
+    return (
+      <LoginView
+        onLoggedIn={(username) => {
+          setUser(username);
+          console.log(username);
+        }}
+        onSignUp={(_bool) => {
+          setSignUp(_bool);
+        }}
+      />
+    );
+  } else if (signUp) {
+    return <div>SIGN UP</div>;
   } else if (movies.length === 0) {
     return <div>The list is empty!</div>;
   } else if (selectedMovie) {
@@ -58,6 +75,14 @@ export const MainView = () => {
           />
         );
       })}
+      <button
+        onClick={() => {
+          setUser(null);
+          setSignUp(null);
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };
