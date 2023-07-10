@@ -9,17 +9,16 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
       `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/login?Username=${username}&Password=${password}`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
       }
     )
       .then((response) => response.json())
-      .then();
+      .then((data) => {
+        console.log(data);
+        onLoggedIn(data.user.Username, data.token);
+      });
   };
 
-  const handleSignUp = (event) => {
+  const handleSignUp = () => {
     onSignUp(true);
   };
 

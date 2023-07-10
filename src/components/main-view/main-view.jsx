@@ -9,6 +9,7 @@ export const MainView = () => {
   let [selectedMovie, setSelectedMovie] = useState(null);
 
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   let [signUp, setSignUp] = useState(null);
 
   //fetches a list of movies from the given url
@@ -31,7 +32,7 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        console.log(signUp);
+        //console.log(signUp);
         //console.log(user);
         //console.log(selectedMovie);
       });
@@ -40,9 +41,11 @@ export const MainView = () => {
   if (!user && !signUp) {
     return (
       <LoginView
-        onLoggedIn={(username) => {
+        onLoggedIn={(username, token) => {
           setUser(username);
-          console.log(username);
+          setToken(token);
+          //console.log("username: " + username);
+          //console.log("Token: " + token);
         }}
         onSignUp={(_bool) => {
           setSignUp(_bool);
@@ -78,7 +81,7 @@ export const MainView = () => {
       <button
         onClick={() => {
           setUser(null);
-          setSignUp(null);
+          //setSignUp(null);
         }}
       >
         Logout
