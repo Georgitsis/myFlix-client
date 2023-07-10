@@ -27344,8 +27344,8 @@ const MainView = ()=>{
         onLoggedIn: (username, token)=>{
             setUser(username);
             setToken(token);
-            console.log("username: " + username);
-            console.log("Token: " + token);
+        //console.log("username: " + username);
+        //console.log("Token: " + token);
         },
         onSignUp: (_bool)=>{
             setSignUp(_bool);
