@@ -43,7 +43,7 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user && !signUp) {
+  if (!storedUser && !signUp) {
     return (
       <LoginView
         onLoggedIn={(username, token) => {
@@ -58,7 +58,13 @@ export const MainView = () => {
       />
     );
   } else if (signUp) {
-    return <SignUpView />;
+    return (
+      <SignUpView
+        offSignUp={() => {
+          setSignUp(_bool);
+        }}
+      />
+    );
   } else if (movies.length === 0) {
     return <div>The list is empty!</div>;
   } else if (selectedMovie) {
@@ -86,7 +92,8 @@ export const MainView = () => {
       <button
         onClick={() => {
           setUser(null);
-          //setSignUp(null);
+          setToken(null);
+          localStorage.clear();
         }}
       >
         Logout

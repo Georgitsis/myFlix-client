@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const SignUpView = () => {
+export const SignUpView = ({ offSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export const SignUpView = () => {
       birthDate: birthday,
     };
 
-    console.log(data);
+    //console.log(data);
     fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
@@ -26,6 +26,7 @@ export const SignUpView = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
+        offSignUp(false);
         window.location.reload();
       } else {
         alert("Signup failed");
