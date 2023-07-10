@@ -13,6 +13,7 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.user) onLoggedIn(data.user.Username, data.token);
         else alert(data.message);
       })
@@ -30,7 +31,7 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
       <span>
         <form onSubmit={handleSubmit}>
           <label>
-            Userrname:
+            Username:
             <input
               type="text"
               value={username}
