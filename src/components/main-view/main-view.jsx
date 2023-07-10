@@ -8,6 +8,8 @@ export const MainView = () => {
 
   let [selectedMovie, setSelectedMovie] = useState(null);
 
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/movies")
       .then((response) => response.json())
@@ -30,7 +32,9 @@ export const MainView = () => {
       });
   });
 
-  if (movies.length === 0) {
+  if (!user) {
+    return <LoginView />;
+  } else if (movies.length === 0) {
     return <div>The list is empty!</div>;
   } else if (selectedMovie) {
     return (
