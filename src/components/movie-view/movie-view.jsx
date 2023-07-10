@@ -1,4 +1,6 @@
 import "./movie-view.css";
+import PropTypes from "prop-types";
+
 export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
   return (
     <div>
@@ -24,4 +26,18 @@ export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
       <button onClick={setSelectedMovieToNull}>Close</button>
     </div>
   );
+};
+MovieView.propTypes = {
+  movieData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    description: PropTypes.string,
+    genre: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    director: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }).isRequired,
+  setSelectedMovieToNull: PropTypes.func.isRequired,
 };
