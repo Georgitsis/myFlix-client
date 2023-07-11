@@ -61,7 +61,7 @@ export const MainView = () => {
     return (
       <SignUpView
         offSignUp={() => {
-          setSignUp(_bool);
+          setSignUp(false);
         }}
       />
     );
