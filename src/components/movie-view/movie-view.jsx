@@ -1,4 +1,4 @@
-import "./movie-view.css";
+import "./movie-view.scss";
 import PropTypes from "prop-types";
 
 export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
