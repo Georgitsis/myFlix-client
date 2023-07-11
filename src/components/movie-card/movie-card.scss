@@ -1,0 +1,14 @@
+.movie-card {
+   margin: 1vw auto;
+   padding: 1vw;
+   max-width: 75vw;
+   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+   &:hover {
+      cursor: pointer;
+   }
+
+   .movie-card-image {
+      max-width: 10vw;
+   }
+}
