@@ -2,10 +2,12 @@
   color: #4682b4;
 }
 
-
+.movie-card-image {
+  margin: 0 auto;
+}
 
 img {
-  max-width: 25vw;
+  max-width: 15vw;
 }
 
 :root, [data-bs-theme="light"] {
