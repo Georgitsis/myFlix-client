@@ -23,7 +23,7 @@ export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
         <span>Director: </span>
         <span>{movieData.director.name}</span>
       </div>
-      <button onClick={setSelectedMovieToNull}>Close</button>
+      <button onClick={setSelectedMovieToNull}>Back</button>
     </div>
   );
 };
