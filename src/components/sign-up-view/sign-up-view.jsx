@@ -1,3 +1,7 @@
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
 export const SignUpView = ({ offSignUp }) => {
@@ -34,11 +38,13 @@ export const SignUpView = ({ offSignUp }) => {
     });
   };
 
+  const handleCancel = () => offSignUp();
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
         Username:
-        <input
+        <Form.Control
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -46,36 +52,43 @@ export const SignUpView = ({ offSignUp }) => {
           minLength="6"
           maxLength={"20"}
         />
-      </label>
-      <label>
+      </Form.Group>
+      <Form.Group>
         Password:
-        <input
+        <Form.Control
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={8}
         />
-      </label>
-      <label>
+      </Form.Group>
+      <Form.Group>
         Email:
-        <input
+        <Form.Control
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
+      </Form.Group>
+      <Form.Group>
         Birthday:
-        <input
+        <Form.Control
           type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+      </Form.Group>
+      <ButtonToolbar aria-label="Toolbar with button groups">
+        <ButtonGroup>
+          <Button type="submit">Submit</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button onClick={handleCancel}>Cancel</Button>
+        </ButtonGroup>
+      </ButtonToolbar>
+    </Form>
   );
 };
