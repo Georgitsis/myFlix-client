@@ -1,30 +1,34 @@
 import "./movie-view.scss";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
   return (
-    <div>
-      <div>
-        <img src={movieData.imageUrl} />
-      </div>
-      <div>
-        <span>Title: </span>
-        <span>{movieData.title}</span>
-      </div>
-      <div>
-        <span>Genre: </span>
-        <span>{movieData.genre.name}</span>
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movieData.description}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movieData.director.name}</span>
-      </div>
-      <button onClick={setSelectedMovieToNull}>Back</button>
-    </div>
+    <>
+      <Card>
+        <Card.Img src={movieData.imageUrl} />
+        <Card.Body>
+          <Card.Title>{movieData.title}</Card.Title>
+          <Card.Text>
+            <div>
+              <span>Genre: </span>
+              <span>{movieData.genre.name}</span>
+            </div>
+            <div>
+              <span>Director: </span>
+              <span>{movieData.director.name}</span>
+            </div>
+            <div>
+              <span>Description: </span>
+              <span>{movieData.description}</span>
+            </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <Button onClick={setSelectedMovieToNull}>Back</Button>
+    </>
   );
 };
 MovieView.propTypes = {
