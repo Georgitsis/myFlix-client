@@ -90,13 +90,14 @@ export const MainView = () => {
             );
           })}
           <Button
+            className="logout-btn"
             onClick={() => {
               setUser(null);
               setToken(null);
               localStorage.clear();
             }}
           >
-            Logout
+            Logffffggg
           </Button>
         </>
       )}
