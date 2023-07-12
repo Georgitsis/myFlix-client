@@ -27448,7 +27448,7 @@ const MainView = ()=>{
                         setToken(null);
                         localStorage.clear();
                     },
-                    children: "Logouttttt"
+                    children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
                     lineNumber: 92,
