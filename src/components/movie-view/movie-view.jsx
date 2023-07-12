@@ -8,7 +8,7 @@ export const MovieView = ({ movieData, setSelectedMovieToNull }) => {
   return (
     <>
       <Card>
-        <Card.Img src={movieData.imageUrl} />
+        <Card.Img className="movie-view-card-img" src={movieData.imageUrl} />
         <Card.Body>
           <Card.Title>{movieData.title}</Card.Title>
           <Card.Text>

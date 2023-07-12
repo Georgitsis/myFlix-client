@@ -9,7 +9,7 @@ export const MovieCard = ({ movieData, onMovieCardClick }) => {
       }}
       className="movie-card h-100"
     >
-      <Card.Img className="movie-card-image" src={movieData.imageUrl} />
+      <Card.Img className="movie-card-img" src={movieData.imageUrl} />
       <Card.Body>
         <Card.Title>{movieData.title}</Card.Title>
         <Card.Text>{movieData.description}</Card.Text>

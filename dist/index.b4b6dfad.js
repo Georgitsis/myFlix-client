@@ -27494,7 +27494,7 @@ const MovieCard = ({ movieData, onMovieCardClick })=>{
         className: "movie-card h-100",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                className: "movie-card-image",
+                className: "movie-card-img",
                 src: movieData.imageUrl
             }, void 0, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
@@ -40960,6 +40960,7 @@ const MovieView = ({ movieData, setSelectedMovieToNull })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                        className: "movie-view-card-img",
                         src: movieData.imageUrl
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",

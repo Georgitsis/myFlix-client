@@ -13194,10 +13194,12 @@ textarea.form-control-lg {
   }
 }
 
-
-
-img {
+.movie-card-img {
   max-width: 15vw;
+}
+
+.movie-view-card-img {
+  max-width: 25vw;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
