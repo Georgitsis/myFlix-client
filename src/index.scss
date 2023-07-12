@@ -12,15 +12,19 @@ $body-color: #fff;
 $card-bg: $dark-color; //$secondary-dark-color;
 $card-border-width: 2px;
 $card-border-color: $secondary;
-
+//text input manipulation
+$input-bg: #564d4d;
+$input-focus-box-shadow: #fff;
 
 
 .card-img {
    margin: 0vw auto;
 }
 
-//text input manipulation
-$input-bg: #564d4d;
-$input-focus-box-shadow: #fff;
+.btn {
+   margin-top: 10px;
+   margin-right: 10px;
+}
+
 
 @import '~bootstrap/scss/bootstrap.scss';
