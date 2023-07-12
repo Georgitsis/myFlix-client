@@ -1,8 +1,3 @@
-.card {
-  margin: 10px;
-  padding: 10px;
-}
-
 .card-img {
   margin: 0 auto;
 }
@@ -13196,6 +13191,17 @@ textarea.form-control-lg {
 
 .movie-card-img {
   max-width: 15vw;
+}
+
+.movie-card {
+  margin: 10px;
+  padding: 10px;
+}
+
+.movie-card:hover {
+  cursor: pointer;
+  border-color: #fff;
+  box-shadow: 0 0 8px #fff;
 }
 
 .movie-view-card-img {
