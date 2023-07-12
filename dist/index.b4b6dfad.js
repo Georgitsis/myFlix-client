@@ -27407,8 +27407,9 @@ const MainView = ()=>{
             lineNumber: 70,
             columnNumber: 9
         }, undefined) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-            md: 8,
+            md: 6,
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                className: "mb-3",
                 movieData: selectedMovie,
                 setSelectedMovieToNull: ()=>setSelectedMovie(null)
             }, void 0, false, {
@@ -27433,12 +27434,12 @@ const MainView = ()=>{
                             }
                         }, movies.id, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 83,
+                            lineNumber: 84,
                             columnNumber: 17
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 82,
+                        lineNumber: 83,
                         columnNumber: 15
                     }, undefined);
                 }),
@@ -27452,7 +27453,7 @@ const MainView = ()=>{
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 93,
+                    lineNumber: 94,
                     columnNumber: 11
                 }, undefined)
             ]

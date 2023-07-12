@@ -69,8 +69,9 @@ export const MainView = () => {
       ) : movies.length === 0 ? (
         <div>The list is empty!</div>
       ) : selectedMovie ? (
-        <Col md={8}>
+        <Col md={6}>
           <MovieView
+            className="mb-3"
             movieData={selectedMovie}
             setSelectedMovieToNull={() => setSelectedMovie(null)}
           />

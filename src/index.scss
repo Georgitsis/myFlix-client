@@ -16,7 +16,6 @@ $card-border-color: $secondary;
 $input-bg: #564d4d;
 $input-focus-box-shadow: #fff;
 
-
 .card-img {
    margin: 0vw auto;
 }
@@ -28,3 +27,7 @@ $input-focus-box-shadow: #fff;
 
 
 @import '~bootstrap/scss/bootstrap.scss';
+
+#root {
+   padding-top: 40px;
+}

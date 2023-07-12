@@ -13194,12 +13194,15 @@ textarea.form-control-lg {
   }
 }
 
+#root {
+  padding-top: 40px;
+}
+
 .movie-card-img {
   max-width: 15vw;
 }
 
 .movie-card {
-  margin: 10px;
   padding: 10px;
 }
 
@@ -13210,12 +13213,11 @@ textarea.form-control-lg {
 }
 
 .movie-view-card-img {
-  max-width: 25vw;
+  max-width: 20vw;
 }
 
 .logout-btn {
   width: auto;
-  margin-top: 10px;
   position: fixed;
   right: 0;
 }
