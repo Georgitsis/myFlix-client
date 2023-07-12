@@ -1,5 +1,29 @@
-$primary: #db0000;
-$secondary: #831010;
+//custom colors
+$netflix-red: #db0000;
+$secondary-netflix-red : #831010;
+$dark-color: #292525;
+$secondary-dark-color: #564d4d;
+//basic bootstrap css manipulation
+$primary: $netflix-red;
+$secondary: $secondary-netflix-red;
 $body-bg: #000;
 $body-color: #fff;
+//Card manipulation
+$card-bg: $dark-color; //$secondary-dark-color;
+$card-border-width: 2px;
+$card-border-color: $secondary;
+
+.card {
+   margin: 10px;
+   padding: 10px;
+}
+
+.card-img {
+   margin: 0vw auto;
+}
+
+//text input manipulation
+$input-bg: #564d4d;
+$input-focus-box-shadow: #fff;
+
 @import '~bootstrap/scss/bootstrap.scss';
