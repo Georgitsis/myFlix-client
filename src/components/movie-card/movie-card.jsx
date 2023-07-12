@@ -1,6 +1,6 @@
 import "./movie-card.scss";
 import PropTypes from "prop-types";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 export const MovieCard = ({ movieData, onMovieCardClick }) => {
   return (
     <Card
@@ -15,14 +15,6 @@ export const MovieCard = ({ movieData, onMovieCardClick }) => {
         <Card.Text>{movieData.description}</Card.Text>
       </Card.Body>
     </Card>
-
-    /*<div
-      onClick={() => {
-        onMovieCardClick(movieData);
-      }}
-    >
-      {movieData.title}
-    </div>*/
   );
 };
 MovieCard.propTypes = {
