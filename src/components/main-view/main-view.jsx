@@ -97,7 +97,7 @@ export const MainView = () => {
               localStorage.clear();
             }}
           >
-            Logffffggg
+            Logout
           </Button>
         </>
       )}
