@@ -7,6 +7,7 @@ import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -45,64 +46,66 @@ export const MainView = () => {
   }, [token]);
 
   return (
-    <Row className="justify-content-md-center">
-      {!storedUser && !signUp ? (
-        <Col md={4}>
-          <LoginView
-            onLoggedIn={(username, token) => {
-              setUser(username);
-              setToken(token);
-            }}
-            onSignUp={(_bool) => {
-              setSignUp(_bool);
-            }}
-          />
-        </Col>
-      ) : signUp ? (
-        <Col md={8}>
-          <SignUpView
-            offSignUp={() => {
-              setSignUp(false);
-            }}
-          />
-        </Col>
-      ) : movies.length === 0 ? (
-        <div>The list is empty!</div>
-      ) : selectedMovie ? (
-        <Col md={6}>
-          <MovieView
-            className="mb-3"
-            movieData={selectedMovie}
-            setSelectedMovieToNull={() => setSelectedMovie(null)}
-          />
-        </Col>
-      ) : (
-        <>
-          {movies.map((movie) => {
-            return (
-              <Col className="mb-3" md={4}>
-                <MovieCard
-                  key={movies.id}
-                  movieData={movie}
-                  onMovieCardClick={(newSelectedMovie) => {
-                    setSelectedMovie(newSelectedMovie);
-                  }}
-                />
-              </Col>
-            );
-          })}
-          <Button
-            className="logout-btn"
-            onClick={() => {
-              setUser(null);
-              setToken(null);
-              localStorage.clear();
-            }}
-          >
-            Logout
-          </Button>
-        </>
-      )}
-    </Row>
+    <BrowserRouter>
+      <Row className="justify-content-md-center">
+        {!storedUser && !signUp ? (
+          <Col md={4}>
+            <LoginView
+              onLoggedIn={(username, token) => {
+                setUser(username);
+                setToken(token);
+              }}
+              onSignUp={(_bool) => {
+                setSignUp(_bool);
+              }}
+            />
+          </Col>
+        ) : signUp ? (
+          <Col md={8}>
+            <SignUpView
+              offSignUp={() => {
+                setSignUp(false);
+              }}
+            />
+          </Col>
+        ) : movies.length === 0 ? (
+          <div>The list is empty!</div>
+        ) : selectedMovie ? (
+          <Col md={6}>
+            <MovieView
+              className="mb-3"
+              movieData={selectedMovie}
+              setSelectedMovieToNull={() => setSelectedMovie(null)}
+            />
+          </Col>
+        ) : (
+          <>
+            {movies.map((movie) => {
+              return (
+                <Col className="mb-3" md={4}>
+                  <MovieCard
+                    key={movies.id}
+                    movieData={movie}
+                    onMovieCardClick={(newSelectedMovie) => {
+                      setSelectedMovie(newSelectedMovie);
+                    }}
+                  />
+                </Col>
+              );
+            })}
+            <Button
+              className="logout-btn"
+              onClick={() => {
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+              }}
+            >
+              Logout
+            </Button>
+          </>
+        )}
+      </Row>
+    </BrowserRouter>
   );
 };
