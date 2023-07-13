@@ -3,6 +3,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const SignUpView = ({ offSignUp }) => {
   const [username, setUsername] = useState("");
@@ -86,7 +87,9 @@ export const SignUpView = ({ offSignUp }) => {
           <Button type="submit">Submit</Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button onClick={handleCancel}>Cancel</Button>
+          <Link to={"/login"}>
+            <Button variant="link">Cancel</Button>
+          </Link>
         </ButtonGroup>
       </ButtonToolbar>
     </Form>
