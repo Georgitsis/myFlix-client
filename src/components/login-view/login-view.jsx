@@ -3,6 +3,7 @@ import { ButtonGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import { Link } from "react-router-dom";
 export const LoginView = ({ onLoggedIn, onSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,12 +30,8 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
       });
   };
 
-  const handleSignUp = () => {
-    onSignUp(true);
-  };
-
   return (
-    <div>
+    <>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
@@ -62,11 +59,14 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
               Login
             </Button>
           </ButtonGroup>
+
           <ButtonGroup>
-            <Button onClick={handleSignUp}>Sign Up</Button>
+            <Link to={"/sign-up"}>
+              <Button variant="link">Sign Up</Button>
+            </Link>
           </ButtonGroup>
         </ButtonToolbar>
       </Form>
-    </div>
+    </>
   );
 };
