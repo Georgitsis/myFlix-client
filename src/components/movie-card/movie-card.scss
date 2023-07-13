@@ -1,10 +1,11 @@
-.movie-card-img {
-   max-width: 15vw;
+.movie-card-link {
+   text-decoration: none;
 }
 
 .movie-card {
    //margin: 10px;
    padding: 10px;
+   //text-decoration: none;
 
    &:hover,
    :focus {
@@ -13,5 +14,7 @@
       cursor: pointer;
    }
 
-
+   .movie-card-img {
+      max-width: 15vw;
+   }
 }

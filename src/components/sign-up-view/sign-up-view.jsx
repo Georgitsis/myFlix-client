@@ -39,8 +39,6 @@ export const SignUpView = ({ offSignUp }) => {
     });
   };
 
-  const handleCancel = () => offSignUp();
-
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -88,7 +86,7 @@ export const SignUpView = ({ offSignUp }) => {
         </ButtonGroup>
         <ButtonGroup>
           <Link to={"/login"}>
-            <Button variant="link">Cancel</Button>
+            <Button>Cancel</Button>
           </Link>
         </ButtonGroup>
       </ButtonToolbar>

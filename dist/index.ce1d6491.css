@@ -13198,8 +13198,8 @@ textarea.form-control-lg {
   padding-top: 40px;
 }
 
-.movie-card-img {
-  max-width: 15vw;
+.movie-card-link {
+  text-decoration: none;
 }
 
 .movie-card {
@@ -13210,6 +13210,10 @@ textarea.form-control-lg {
   cursor: pointer;
   border-color: #fff;
   box-shadow: 0 0 8px #fff;
+}
+
+.movie-card .movie-card-img {
+  max-width: 15vw;
 }
 
 .movie-view-card-img {

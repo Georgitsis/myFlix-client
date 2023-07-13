@@ -58,7 +58,7 @@ export const MainView = () => {
                 {storedUser ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={12}>
+                  <Col md={4}>
                     <LoginView
                       onLoggedIn={(username, token) => {
                         setUser(username);
@@ -102,24 +102,29 @@ export const MainView = () => {
             path="/"
             element={
               <>
-                {movies.map((movie) => {
-                  return (
-                    <Col className="mb-3" md={4}>
-                      <MovieCard key={movie.id} movieData={movie} />
-                    </Col>
-                  );
-                })}
-
-                <Button
-                  className="logout-btn primary"
-                  onClick={() => {
-                    setUser(null);
-                    setToken(null);
-                    localStorage.clear();
-                  }}
-                >
-                  Logout
-                </Button>
+                {!storedUser ? (
+                  <Navigate to={"/login"} replace />
+                ) : (
+                  <>
+                    {movies.map((movie) => {
+                      return (
+                        <Col className="mb-3" md={4}>
+                          <MovieCard key={movie.id} movieData={movie} />
+                        </Col>
+                      );
+                    })}
+                    <Button
+                      className="logout-btn primary"
+                      onClick={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </>
+                )}
               </>
             }
           />

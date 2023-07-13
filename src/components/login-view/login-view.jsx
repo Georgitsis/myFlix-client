@@ -62,7 +62,7 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
 
           <ButtonGroup>
             <Link to={"/sign-up"}>
-              <Button variant="link">Sign Up</Button>
+              <Button>Sign Up</Button>
             </Link>
           </ButtonGroup>
         </ButtonToolbar>

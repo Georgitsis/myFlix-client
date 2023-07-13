@@ -4,22 +4,21 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-//import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
-
-/*let navigate = useNavigate();
-const routeChange = () => {
-  //let path = "/";
-  navigate("/");
-};*/
+import { Link } from "react-router-dom";
 
 export const MovieView = ({ movieList }) => {
   const params = useParams();
-  const movieToDisplay = movieList.find((m) => {
-    m.id === params.movieId;
-    console.log(params.movieId);
-    console.log(m.id);
-  });
+  console.log(movieList);
+  let movieToDisplay = "";
+  for (i = 0; i < movieList.length; i++) {
+    if (params.movieId === movieList[i].id) {
+      movieToDisplay = movieList[i];
+      console.log(i);
+      break;
+    }
+  }
+
   console.log(movieToDisplay);
   return (
     <>
@@ -46,7 +45,9 @@ export const MovieView = ({ movieList }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Button onClick={routeChange}>Back</Button>
+      <Link to={"/"}>
+        <Button>Back</Button>
+      </Link>
     </>
   );
 };

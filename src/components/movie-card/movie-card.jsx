@@ -4,7 +4,11 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export const MovieCard = ({ movieData }) => {
   return (
-    <Link to={`/movies/${encodeURIComponent(movieData.id)}`}>
+    <Link
+      to={`/movies/${encodeURIComponent(movieData.id)}`}
+      className="movie-card-link"
+      //style={{ textDecoration: "none" }}
+    >
       <Card className="movie-card h-100">
         <Card.Img className="movie-card-img" src={movieData.imageUrl} />
         <Card.Body>
