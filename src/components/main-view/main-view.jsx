@@ -3,6 +3,13 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
+import "./main-view.scss";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -37,67 +44,92 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        //console.log(signUp);
-        //console.log(user);
-        //console.log(selectedMovie);
       });
   }, [token]);
 
-  if (!storedUser && !signUp) {
-    return (
-      <LoginView
-        onLoggedIn={(username, token) => {
-          setUser(username);
-          setToken(token);
-          //console.log("username: " + username);
-          //console.log("Tokffen: " + token);
-        }}
-        onSignUp={(_bool) => {
-          setSignUp(_bool);
-        }}
-      />
-    );
-  } else if (signUp) {
-    return (
-      <SignUpView
-        offSignUp={() => {
-          setSignUp(_bool);
-        }}
-      />
-    );
-  } else if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  } else if (selectedMovie) {
-    return (
-      <MovieView
-        movieData={selectedMovie}
-        setSelectedMovieToNull={() => setSelectedMovie(null)}
-      />
-    );
-  }
-
   return (
-    <div>
-      {movies.map((movie) => {
-        return (
-          <MovieCard
-            key={movies.id}
-            movieData={movie}
-            onMovieCardClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
+    <BrowserRouter>
+      <Row className="justify-content-md-center">
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <>
+                {storedUser ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={4}>
+                    <LoginView
+                      onLoggedIn={(username, token) => {
+                        setUser(username);
+                        setToken(token);
+                      }}
+                    />
+                  </Col>
+                )}
+              </>
+            }
           />
-        );
-      })}
-      <button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </button>
-    </div>
+          <Route
+            path="/sign-up"
+            element={
+              <>
+                {storedUser ? (
+                  <Navigate to="/" replace />
+                ) : (
+                  <Col md={8}>
+                    <SignUpView />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/movies/:movieId"
+            element={
+              <>
+                {!storedUser ? (
+                  <Navigate to={"/login"} replace />
+                ) : (
+                  <Col md={6}>
+                    <MovieView className="mb-3" movieList={movies} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                {!storedUser ? (
+                  <Navigate to={"/login"} replace />
+                ) : (
+                  <>
+                    {movies.map((movie) => {
+                      return (
+                        <Col className="mb-3" md={4}>
+                          <MovieCard key={movie.id} movieData={movie} />
+                        </Col>
+                      );
+                    })}
+                    <Button
+                      className="logout-btn primary"
+                      onClick={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </>
+                )}
+              </>
+            }
+          />
+        </Routes>
+      </Row>
+    </BrowserRouter>
   );
 };

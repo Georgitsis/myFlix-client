@@ -1,0 +1,19 @@
+.movie-card-link {
+   text-decoration: none;
+}
+
+.movie-card {
+   //margin: 10px;
+   padding: 10px;
+   //text-decoration: none;
+
+   &:hover {
+      box-shadow: 0 0 8px #fff;
+      border-color: #fff; //$secondary-netflix-red;
+      cursor: pointer;
+   }
+
+   .movie-card-img {
+      max-width: 15vw;
+   }
+}
