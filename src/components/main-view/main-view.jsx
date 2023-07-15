@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -123,6 +124,18 @@ export const MainView = () => {
                       );
                     })}
                   </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <>
+                {!storedUser ? (
+                  <Navigate to={"/login"} replace />
+                ) : (
+                  <ProfileView />
                 )}
               </>
             }
