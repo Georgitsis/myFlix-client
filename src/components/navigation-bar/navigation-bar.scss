@@ -1,3 +1,11 @@
+$netflix-red: #db0000;
+
 .navigation-bar {
-   background-color: #564d4d;
+   background-color: $netflix-red;
+   color: #fff;
+
+   * {
+      background-color: $netflix-red;
+      color: #fff;
+   }
 }

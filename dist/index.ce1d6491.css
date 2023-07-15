@@ -13226,4 +13226,9 @@ textarea.form-control-lg {
   right: 0;
 }
 
+.navigation-bar, .navigation-bar * {
+  color: #fff;
+  background-color: #db0000;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */
