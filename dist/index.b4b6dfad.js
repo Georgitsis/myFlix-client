@@ -27446,27 +27446,16 @@ const MainView = ()=>{
                                     to: "/login",
                                     replace: true
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                    children: [
-                                        movies.map((movie)=>{
-                                            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                                                className: "mb-3",
-                                                md: 4,
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                                                    movieData: movie
-                                                }, movie.id, false, void 0, void 0)
-                                            }, void 0, false, void 0, void 0);
-                                        }),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                                            className: "logout-btn primary",
-                                            onClick: ()=>{
-                                                setUser(null);
-                                                setToken(null);
-                                                localStorage.clear();
-                                            },
-                                            children: "Logout"
-                                        }, void 0, false, void 0, void 0)
-                                    ]
-                                }, void 0, true)
+                                    children: movies.map((movie)=>{
+                                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                            className: "mb-3",
+                                            md: 4,
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                                                movieData: movie
+                                            }, movie.id, false, void 0, void 0)
+                                        }, void 0, false, void 0, void 0);
+                                    })
+                                }, void 0, false)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
@@ -47279,7 +47268,8 @@ var _reactRouterDom = require("react-router-dom");
 var _navigationBarScss = require("./navigation-bar.scss");
 const NavigationBar = ({ user, onLoggedOut })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
-        className: "navigation-bar",
+        className: "navigation-bar mb-5",
+        fixed: "top",
         expand: "md",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
             children: [
@@ -47303,7 +47293,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
                     id: "basic-navbar-nav",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
-                        className: "me-auto",
+                        className: "ms-auto",
                         children: [
                             !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: [

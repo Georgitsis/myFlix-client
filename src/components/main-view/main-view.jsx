@@ -122,16 +122,6 @@ export const MainView = () => {
                         </Col>
                       );
                     })}
-                    <Button
-                      className="logout-btn primary"
-                      onClick={() => {
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
-                      }}
-                    >
-                      Logout
-                    </Button>
                   </>
                 )}
               </>

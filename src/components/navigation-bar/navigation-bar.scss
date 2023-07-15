@@ -3,9 +3,10 @@ $netflix-red: #db0000;
 .navigation-bar {
    background-color: $netflix-red;
    color: #fff;
+   //position: fixed;
 
    * {
-      background-color: $netflix-red;
-      color: #fff;
+      background-color: inherit;
+      color: inherit;
    }
 }

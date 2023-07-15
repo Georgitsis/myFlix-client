@@ -4,14 +4,14 @@ import "./navigation-bar.scss";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar className="navigation-bar" expand="md">
+    <Navbar className="navigation-bar mb-5" fixed="top" expand="md">
       <Container>
         <Navbar.Brand className="navigation-bar" as={Link} to="/">
           MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             {!user && (
               <>
                 <Nav.Link as={Link} to="/login">

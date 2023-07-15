@@ -13195,7 +13195,7 @@ textarea.form-control-lg {
 }
 
 #root {
-  padding-top: 40px;
+  padding-top: 75px;
 }
 
 .movie-card-link {
@@ -13226,9 +13226,14 @@ textarea.form-control-lg {
   right: 0;
 }
 
-.navigation-bar, .navigation-bar * {
+.navigation-bar {
   color: #fff;
   background-color: #db0000;
+}
+
+.navigation-bar * {
+  background-color: inherit;
+  color: inherit;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
