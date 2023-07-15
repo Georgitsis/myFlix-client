@@ -18,6 +18,7 @@ export const MainView = () => {
 
   let [selectedMovie, setSelectedMovie] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
+  //console.log(storedUser);
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -53,7 +54,7 @@ export const MainView = () => {
     <BrowserRouter>
       <Row className="justify-content-md-center">
         <NavigationBar
-          user={storedUser}
+          user={user}
           onLoggedOut={() => {
             setUser(null);
             setToken(null);
@@ -65,13 +66,14 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                {storedUser ? (
+                {user ? (
                   <Navigate to="/" />
                 ) : (
                   <Col md={4}>
                     <LoginView
-                      onLoggedIn={(username, token) => {
-                        setUser(username);
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        // console.log(user.Username);
                         setToken(token);
                       }}
                     />
@@ -132,10 +134,10 @@ export const MainView = () => {
             path="/user"
             element={
               <>
-                {!storedUser ? (
+                {!user ? (
                   <Navigate to={"/login"} replace />
                 ) : (
-                  <ProfileView />
+                  <ProfileView user={user} />
                 )}
               </>
             }
