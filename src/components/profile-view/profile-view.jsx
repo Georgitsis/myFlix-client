@@ -1,3 +1,3 @@
-export const ProfileView = ({ user, onLoggedOut }) => {
-  return <di>Profile</di>;
+export const ProfileView = ({ user }) => {
+  return <div>Profile</div>;
 };
