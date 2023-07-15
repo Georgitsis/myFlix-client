@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -50,6 +51,14 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <Row className="justify-content-md-center">
+        <NavigationBar
+          user={storedUser}
+          onLoggedOut={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        />
         <Routes>
           <Route
             path="/login"
