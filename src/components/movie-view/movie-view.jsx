@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-export const MovieView = ({ movieList }) => {
+export const MovieView = ({ movieList, username, token }) => {
   const params = useParams();
   console.log(movieList);
   let movieToDisplay = "";
@@ -18,6 +18,25 @@ export const MovieView = ({ movieList }) => {
       break;
     }
   }
+
+  const handleAddToFavorites = () => {
+    console.log(username);
+    console.log(movieToDisplay.id);
+    console.log(token);
+    fetch(
+      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/${username}/favorites/${movieToDisplay.id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) alert("Movie added to favorites List");
+      else alert("Something went wrong.");
+    });
+  };
 
   console.log(movieToDisplay);
   return (
@@ -45,9 +64,9 @@ export const MovieView = ({ movieList }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Button>Add to favorites</Button>
+      <Button onClick={handleAddToFavorites}>Add to favorites</Button>
       <Link to={"/"}>
-        <Button>Baaack</Button>
+        <Button>Back</Button>
       </Link>
     </>
   );

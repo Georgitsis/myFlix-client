@@ -107,7 +107,12 @@ export const MainView = () => {
                   <Navigate to={"/login"} replace />
                 ) : (
                   <Col md={6}>
-                    <MovieView className="mb-3" movieList={movies} />
+                    <MovieView
+                      className="mb-3"
+                      movieList={movies}
+                      username={user.Username}
+                      token={token}
+                    />
                   </Col>
                 )}
               </>
