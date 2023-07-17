@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
+import { FavoritesView } from "../favorites-view/favorites-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import "./main-view.scss";
 import Row from "react-bootstrap/Row";
@@ -153,6 +154,20 @@ export const MainView = () => {
                         handleOnLoggedOut();
                       }}
                     />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to={"/login"} /*replace*/ />
+                ) : (
+                  <Col md={5}>
+                    <FavoritesView />
                   </Col>
                 )}
               </>

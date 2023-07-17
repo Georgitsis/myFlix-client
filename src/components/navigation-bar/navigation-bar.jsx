@@ -31,7 +31,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                   <NavDropdown.Item as={Link} to="/user">
                     User profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/user">
+                  <NavDropdown.Item as={Link} to="/favorites">
                     Favorite movies
                   </NavDropdown.Item>
                 </NavDropdown>
