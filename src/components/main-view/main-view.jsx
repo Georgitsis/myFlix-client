@@ -35,7 +35,19 @@ export const MainView = () => {
     setUser(updatedUser);
     generateNewFavoriteMovies();
   };
-  const removeFromFavoritesList = () => {};
+  const removeFromFavoritesList = (movieToRemove) => {
+    let updatedUser = user;
+
+    for (i = 0; i < updatedUser.favoriteMovies.length; i++) {
+      if (updatedUser.favoriteMovies[i] === movieToRemove) {
+        delete updatedUser.favoriteMovies[i];
+        break;
+      }
+    }
+
+    setUser(updatedUser);
+    generateNewFavoriteMovies();
+  };
 
   const generateNewFavoriteMovies = () => {
     let usersFavoriteMovies = movies.filter((m) => {
@@ -130,8 +142,12 @@ export const MainView = () => {
                       movieList={movies}
                       username={user.Username}
                       token={token}
+                      favoriteMovies={favoriteMovies}
                       addToFavList={(addedMovie) => {
                         addToFavoritesList(addedMovie);
+                      }}
+                      removeFromFavList={(removedMovie) => {
+                        removeFromFavoritesList(removedMovie);
                       }}
                     />
                   </Col>

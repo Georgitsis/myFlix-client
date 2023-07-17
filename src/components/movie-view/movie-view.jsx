@@ -7,7 +7,14 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-export const MovieView = ({ movieList, username, token, addToFavList }) => {
+export const MovieView = ({
+  movieList,
+  username,
+  token,
+  addToFavList,
+  removeFromFavList,
+  favoriteMovies,
+}) => {
   const params = useParams();
 
   let movieToDisplay = "";
@@ -36,7 +43,34 @@ export const MovieView = ({ movieList, username, token, addToFavList }) => {
     });
   };
 
-  console.log(movieToDisplay);
+  const handleRemoveFromFavorites = () => {
+    fetch(
+      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/${username}/favorites/${movieToDisplay.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        alert("Movie removed from favorites List");
+        removeFromFavList(movieToDisplay.id);
+      } else alert("Something went wrong.");
+    });
+  };
+
+  let buttonFunction = handleAddToFavorites;
+  let buttonText = "Add to favorites";
+  for (i = 0; i < favoriteMovies.length; i++) {
+    if (params.movieId === favoriteMovies[i].id) {
+      buttonFunction = handleRemoveFromFavorites;
+      buttonText = "Remove from favorites";
+      break;
+    }
+  }
+
   return (
     <>
       <Card clasName="movie-view-card">
@@ -62,7 +96,8 @@ export const MovieView = ({ movieList, username, token, addToFavList }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Button onClick={handleAddToFavorites}>Add to favorites</Button>
+      <Button onClick={buttonFunction}>{buttonText}</Button>
+
       <Link to={"/"}>
         <Button>Back</Button>
       </Link>
