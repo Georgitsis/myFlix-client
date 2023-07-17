@@ -21,7 +21,6 @@ export const SignUpView = ({ goToLoginAfterSignUp }) => {
       birthDate: birthday,
     };
 
-    //console.log(data);
     fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),

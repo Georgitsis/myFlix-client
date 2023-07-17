@@ -3,13 +3,10 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
-import { FavoritesView } from "../favorites-view/favorites-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
@@ -35,6 +32,7 @@ export const MainView = () => {
     setUser(updatedUser);
     generateNewFavoriteMovies();
   };
+
   const removeFromFavoritesList = (movieToRemove) => {
     let updatedUser = user;
 
@@ -44,14 +42,13 @@ export const MainView = () => {
         break;
       }
     }
-
     setUser(updatedUser);
     generateNewFavoriteMovies();
   };
 
   const generateNewFavoriteMovies = () => {
     let usersFavoriteMovies = movies.filter((m) => {
-      if (user) return user.favoriteMovies.includes(m.id);
+      return user.favoriteMovies.includes(m.id);
     });
     setFavoriteMovies(usersFavoriteMovies);
   };

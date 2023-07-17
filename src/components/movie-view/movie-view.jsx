@@ -1,7 +1,6 @@
 import "./movie-view.scss";
 import PropTypes from "prop-types";
 import React from "react";
-import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
@@ -73,7 +72,7 @@ export const MovieView = ({
 
   return (
     <>
-      <Card clasName="movie-view-card">
+      <Card className="movie-view-card">
         <Card.Img
           className="movie-view-card-img"
           src={movieToDisplay.imageUrl}
@@ -105,15 +104,34 @@ export const MovieView = ({
   );
 };
 MovieView.propTypes = {
-  movieToDisplay: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    description: PropTypes.string,
-    genre: PropTypes.shape({
-      name: PropTypes.string,
-    }),
-    director: PropTypes.shape({
-      name: PropTypes.string,
-    }),
-  }).isRequired,
+  movieList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      genre: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+      director: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    })
+  ),
+  username: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  addToFavList: PropTypes.func.isRequired,
+  removeFromFavList: PropTypes.func.isRequired,
+  favoriteMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      genre: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+      director: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    })
+  ),
 };

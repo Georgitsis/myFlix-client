@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 export const ProfileView = ({ user, token, onLoggedOut }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
@@ -52,7 +53,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
     ).then((response) => {
       if (response.ok) {
         onLoggedOut();
-        alert("De-registssssration successful");
+        alert("De-registration successful");
       } else {
         alert("De-registration failed");
       }
@@ -75,7 +76,6 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
         Password:
         <Form.Control
           type="password"
-          //value={password}
           placeholder="Type in old or new password"
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -94,7 +94,6 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
       <Form.Group>
         Birthday:
         <Form.Control
-          //type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required

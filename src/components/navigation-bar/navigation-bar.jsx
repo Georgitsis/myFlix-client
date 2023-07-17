@@ -25,9 +25,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <NavDropdown
-                  title={user.Username} /*id="collasible-nav-dropdown"*/
-                >
+                <NavDropdown title={user.Username}>
                   <NavDropdown.Item as={Link} to="/user">
                     User profile
                   </NavDropdown.Item>
