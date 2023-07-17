@@ -4,7 +4,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-export const ProfileView = ({ user, token }) => {
+export const ProfileView = ({ user, token, onLoggedOut }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
@@ -51,11 +51,13 @@ export const ProfileView = ({ user, token }) => {
       }
     ).then((response) => {
       if (response.ok) {
-        alert("Signup successful");
+        onLoggedOut();
+        alert("De-registration successful");
       } else {
-        alert("Signup failed");
+        alert("De-registration failed");
       }
     });
+    //.then(onLoggedOut);
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -104,14 +106,12 @@ export const ProfileView = ({ user, token }) => {
           <Button type="submit">Update user data</Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to={"/login"}>
+          <Link to={"/"}>
             <Button>Cancel</Button>
           </Link>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to={"/"}>
-            <Button onClick={handleDeregister}>Deregister</Button>
-          </Link>
+          <Button onClick={handleDeregister}>Deregister</Button>
         </ButtonGroup>
       </ButtonToolbar>
     </Form>
