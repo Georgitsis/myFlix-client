@@ -47127,7 +47127,6 @@ const SignUpView = ()=>{
         }).then((response)=>{
             if (response.ok) {
                 alert("Signup successful");
-                //offSignUp(false);
                 window.location.reload();
             } else alert("Signup failed");
         });
@@ -47147,13 +47146,13 @@ const SignUpView = ()=>{
                         maxLength: "20"
                     }, void 0, false, {
                         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                        lineNumber: 46,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                lineNumber: 44,
+                lineNumber: 43,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47167,13 +47166,13 @@ const SignUpView = ()=>{
                         minLength: 8
                     }, void 0, false, {
                         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                        lineNumber: 57,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                lineNumber: 55,
+                lineNumber: 54,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47186,13 +47185,13 @@ const SignUpView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                        lineNumber: 67,
+                        lineNumber: 66,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                lineNumber: 65,
+                lineNumber: 64,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47205,13 +47204,13 @@ const SignUpView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                        lineNumber: 76,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                lineNumber: 74,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonToolbarDefault.default), {
@@ -47223,12 +47222,12 @@ const SignUpView = ()=>{
                             children: "Submit"
                         }, void 0, false, {
                             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                            lineNumber: 85,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                        lineNumber: 84,
+                        lineNumber: 83,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonGroupDefault.default), {
@@ -47238,29 +47237,29 @@ const SignUpView = ()=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                                lineNumber: 89,
+                                lineNumber: 88,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                            lineNumber: 88,
+                            lineNumber: 87,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                        lineNumber: 87,
+                        lineNumber: 86,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                lineNumber: 83,
+                lineNumber: 82,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-        lineNumber: 43,
+        lineNumber: 42,
         columnNumber: 5
     }, undefined);
 };
