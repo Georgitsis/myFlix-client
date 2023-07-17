@@ -57,7 +57,6 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
         alert("De-registration failed");
       }
     });
-    //.then(onLoggedOut);
   };
   return (
     <Form onSubmit={handleSubmit}>
