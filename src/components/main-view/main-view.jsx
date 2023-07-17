@@ -21,16 +21,27 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  let [signUp, setSignUp] = useState(null);
-
-  let favoriteMovies = movies.filter((m) => {
-    return user.favoriteMovies.includes(m.id);
-  });
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   const handleOnLoggedOut = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
+  };
+
+  const addToFavoritesList = (movieToAdd) => {
+    let updatedUser = user;
+    updatedUser.favoriteMovies.push(movieToAdd);
+    setUser(updatedUser);
+    generateNewFavoriteMovies();
+  };
+  const removeFromFavoritesList = () => {};
+
+  const generateNewFavoriteMovies = () => {
+    let usersFavoriteMovies = movies.filter((m) => {
+      if (user) return user.favoriteMovies.includes(m.id);
+    });
+    setFavoriteMovies(usersFavoriteMovies);
   };
 
   //fetches a list of movies from the given url
@@ -56,6 +67,10 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+        let usersFavoriteMovies = movies.filter((m) => {
+          if (user) return user.favoriteMovies.includes(m.id);
+        });
+        setFavoriteMovies(usersFavoriteMovies);
       });
   }, [token]);
 
@@ -115,6 +130,9 @@ export const MainView = () => {
                       movieList={movies}
                       username={user.Username}
                       token={token}
+                      addToFavList={(addedMovie) => {
+                        addToFavoritesList(addedMovie);
+                      }}
                     />
                   </Col>
                 )}
