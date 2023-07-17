@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const SignUpView = () => {
+export const SignUpView = ({ goToLoginAfterSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");

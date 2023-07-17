@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import "./navigation-bar.scss";
 
@@ -24,9 +25,16 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/user">
-                  User
-                </Nav.Link>
+                <NavDropdown
+                  title={user.Username} /*id="collasible-nav-dropdown"*/
+                >
+                  <NavDropdown.Item as={Link} to="/user">
+                    User profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/user">
+                    Favorite movies
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>

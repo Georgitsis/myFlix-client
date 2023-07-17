@@ -89,7 +89,7 @@ export const MainView = () => {
             path="/sign-up"
             element={
               <>
-                {storedUser ? (
+                {user ? (
                   <Navigate to="/" replace />
                 ) : (
                   <Col md={8}>

@@ -41,7 +41,7 @@ export const MovieView = ({ movieList, username, token }) => {
   console.log(movieToDisplay);
   return (
     <>
-      <Card>
+      <Card clasName="movie-view-card">
         <Card.Img
           className="movie-view-card-img"
           src={movieToDisplay.imageUrl}

@@ -10,3 +10,9 @@ $netflix-red: #db0000;
       color: inherit;
    }
 }
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+   color: #000;
+   background-color: #db0000;
+}

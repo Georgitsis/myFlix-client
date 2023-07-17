@@ -13217,7 +13217,9 @@ textarea.form-control-lg {
 }
 
 .movie-view-card-img {
+  border-radius: 2px;
   max-width: 20vw;
+  padding: 10px;
 }
 
 .logout-btn {
@@ -13234,6 +13236,11 @@ textarea.form-control-lg {
 .navigation-bar * {
   background-color: inherit;
   color: inherit;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #000;
+  background-color: #db0000;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
