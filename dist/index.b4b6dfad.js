@@ -27341,9 +27341,12 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     let [signUp, setSignUp] = (0, _react.useState)(null);
-    /*const handleOnLoggedOut = () => {
-
-  }*/ //fetches a list of movies from the given url
+    const handleOnLoggedOut = ()=>{
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+    };
+    //fetches a list of movies from the given url
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/movies", {
@@ -27377,13 +27380,11 @@ const MainView = ()=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
                     user: user,
                     onLoggedOut: ()=>{
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
+                        handleOnLoggedOut();
                     }
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 60,
+                    lineNumber: 62,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
@@ -27477,9 +27478,7 @@ const MainView = ()=>{
                                         user: user,
                                         token: token,
                                         onLoggedOut: ()=>{
-                                            setUser(null);
-                                            setToken(null);
-                                            localStorage.clear();
+                                            handleOnLoggedOut();
                                         }
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
@@ -27498,12 +27497,12 @@ const MainView = ()=>{
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 59,
+            lineNumber: 61,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 58,
+        lineNumber: 60,
         columnNumber: 5
     }, undefined);
 };

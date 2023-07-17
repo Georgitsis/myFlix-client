@@ -24,9 +24,11 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   let [signUp, setSignUp] = useState(null);
 
-  /*const handleOnLoggedOut = () => {
-
-  }*/
+  const handleOnLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
 
   //fetches a list of movies from the given url
   useEffect(() => {
@@ -60,9 +62,7 @@ export const MainView = () => {
         <NavigationBar
           user={user}
           onLoggedOut={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
+            handleOnLoggedOut();
           }}
         />
         <Routes>
@@ -145,9 +145,7 @@ export const MainView = () => {
                       user={user}
                       token={token}
                       onLoggedOut={() => {
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
+                        handleOnLoggedOut();
                       }}
                     />
                   </Col>
