@@ -1,5 +1,3 @@
-export const FavoritesView = ({}) => {
-  return(
-   
-  )
+export const FavoritesView = ({ favoritesList }) => {
+  return console.log(favoritesList);
 };

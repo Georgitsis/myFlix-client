@@ -9,12 +9,11 @@ import { Link } from "react-router-dom";
 
 export const MovieView = ({ movieList, username, token }) => {
   const params = useParams();
-  console.log(movieList);
+
   let movieToDisplay = "";
   for (i = 0; i < movieList.length; i++) {
     if (params.movieId === movieList[i].id) {
       movieToDisplay = movieList[i];
-      console.log(i);
       break;
     }
   }

@@ -17,13 +17,15 @@ import { ProfileView } from "../profile-view/profile-view";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
-  let [selectedMovie, setSelectedMovie] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  //console.log(storedUser);
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   let [signUp, setSignUp] = useState(null);
+
+  let favoriteMovies = movies.filter((m) => {
+    return user.favoriteMovies.includes(m.id);
+  });
 
   const handleOnLoggedOut = () => {
     setUser(null);
@@ -164,11 +166,17 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to={"/login"} /*replace*/ />
+                  <Navigate to={"/login"} />
                 ) : (
-                  <Col md={5}>
-                    <FavoritesView />
-                  </Col>
+                  <>
+                    {favoriteMovies.map((movie) => {
+                      return (
+                        <Col className="mb-3" md={4}>
+                          <MovieCard key={movie.id} movieData={movie} />
+                        </Col>
+                      );
+                    })}
+                  </>
                 )}
               </>
             }
