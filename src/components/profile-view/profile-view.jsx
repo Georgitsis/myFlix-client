@@ -52,7 +52,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
     ).then((response) => {
       if (response.ok) {
         onLoggedOut();
-        alert("De-registration successful");
+        alert("De-registssssration successful");
       } else {
         alert("De-registration failed");
       }
