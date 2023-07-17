@@ -5,8 +5,7 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 export const ProfileView = ({ user, token }) => {
-  const [oldUsername, setOldUsername] = useState(user.Username);
-  console.log(oldUsername);
+  const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.email);
@@ -21,9 +20,8 @@ export const ProfileView = ({ user, token }) => {
       email: email,
       birthDate: birthday,
     };
-    console.log(oldUsername);
     fetch(
-      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/update/${oldUsername}`,
+      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/update/${initialUsername}`,
       {
         method: "PUT",
         body: JSON.stringify(data),
@@ -33,7 +31,25 @@ export const ProfileView = ({ user, token }) => {
         },
       }
     ).then((response) => {
-      console.log(response);
+      if (response.ok) {
+        alert("Signup successful");
+      } else {
+        alert("Signup failed");
+      }
+    });
+  };
+
+  const handleDeregister = () => {
+    fetch(
+      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/${initialUsername}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    ).then((response) => {
       if (response.ok) {
         alert("Signup successful");
       } else {
@@ -90,6 +106,11 @@ export const ProfileView = ({ user, token }) => {
         <ButtonGroup>
           <Link to={"/login"}>
             <Button>Cancel</Button>
+          </Link>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Link to={"/"}>
+            <Button onClick={handleDeregister}>Deregister</Button>
           </Link>
         </ButtonGroup>
       </ButtonToolbar>

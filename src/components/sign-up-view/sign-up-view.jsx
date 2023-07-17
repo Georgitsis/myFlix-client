@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const SignUpView = ({ offSignUp }) => {
+export const SignUpView = (/*{ offSignUp }*/) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ export const SignUpView = ({ offSignUp }) => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        offSignUp(false);
+        //offSignUp(false);
         window.location.reload();
       } else {
         alert("Signup failed");

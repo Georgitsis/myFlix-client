@@ -47103,7 +47103,7 @@ var _formDefault = parcelHelpers.interopDefault(_form);
 var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
-const SignUpView = ({ offSignUp })=>{
+const SignUpView = ()=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -47127,7 +47127,7 @@ const SignUpView = ({ offSignUp })=>{
         }).then((response)=>{
             if (response.ok) {
                 alert("Signup successful");
-                offSignUp(false);
+                //offSignUp(false);
                 window.location.reload();
             } else alert("Signup failed");
         });
@@ -47425,8 +47425,7 @@ var _react = require("react");
 var _s = $RefreshSig$();
 const ProfileView = ({ user, token })=>{
     _s();
-    const [oldUsername, setOldUsername] = (0, _react.useState)(user.Username);
-    console.log(oldUsername);
+    const [initialUsername, setInitialUsername] = (0, _react.useState)(user.Username);
     const [username, setUsername] = (0, _react.useState)(user.Username);
     const [password, setPassword] = (0, _react.useState)(user.Password);
     const [email, setEmail] = (0, _react.useState)(user.email);
@@ -47439,8 +47438,7 @@ const ProfileView = ({ user, token })=>{
             email: email,
             birthDate: birthday
         };
-        console.log(oldUsername);
-        fetch(`https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/update/${oldUsername}`, {
+        fetch(`https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/update/${initialUsername}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -47448,7 +47446,18 @@ const ProfileView = ({ user, token })=>{
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
-            console.log(response);
+            if (response.ok) alert("Signup successful");
+            else alert("Signup failed");
+        });
+    };
+    const handleDeregister = ()=>{
+        fetch(`https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/${initialUsername}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
             if (response.ok) alert("Signup successful");
             else alert("Signup failed");
         });
@@ -47468,13 +47477,13 @@ const ProfileView = ({ user, token })=>{
                         maxLength: "20"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 48,
+                        lineNumber: 64,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 46,
+                lineNumber: 62,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47489,13 +47498,13 @@ const ProfileView = ({ user, token })=>{
                         minLength: 8
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 59,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 57,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47508,13 +47517,13 @@ const ProfileView = ({ user, token })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 86,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 68,
+                lineNumber: 84,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47527,13 +47536,13 @@ const ProfileView = ({ user, token })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 79,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 77,
+                lineNumber: 93,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonToolbarDefault.default), {
@@ -47545,12 +47554,12 @@ const ProfileView = ({ user, token })=>{
                             children: "Update user data"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 88,
+                            lineNumber: 104,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 87,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonGroupDefault.default), {
@@ -47560,33 +47569,54 @@ const ProfileView = ({ user, token })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 92,
+                                lineNumber: 108,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 91,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 90,
+                        lineNumber: 106,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonGroupDefault.default), {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                            to: "/",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                                onClick: handleDeregister,
+                                children: "Deregister"
+                            }, void 0, false, {
+                                fileName: "src/components/profile-view/profile-view.jsx",
+                                lineNumber: 113,
+                                columnNumber: 13
+                            }, undefined)
+                        }, void 0, false, {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 112,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/profile-view/profile-view.jsx",
+                        lineNumber: 111,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 86,
+                lineNumber: 102,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 45,
+        lineNumber: 61,
         columnNumber: 5
     }, undefined);
 };
-_s(ProfileView, "LQlHVBMOYUK5FWexfIRtQYwF/FQ=");
+_s(ProfileView, "gWmDmRT4gm7DI5AnCi00msvGE7w=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
