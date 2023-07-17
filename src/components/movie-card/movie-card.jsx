@@ -2,6 +2,7 @@ import "./movie-card.scss";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 export const MovieCard = ({ movieData }) => {
   return (
     <Link
@@ -14,6 +15,7 @@ export const MovieCard = ({ movieData }) => {
         <Card.Body>
           <Card.Title>{movieData.title}</Card.Title>
           <Card.Text>{movieData.description}</Card.Text>
+          <Button>Add to favorites</Button>
         </Card.Body>
       </Card>
     </Link>

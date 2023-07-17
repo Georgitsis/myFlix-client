@@ -45,6 +45,7 @@ export const MovieView = ({ movieList }) => {
           </Card.Text>
         </Card.Body>
       </Card>
+      <Button>Add to favorites</Button>
       <Link to={"/"}>
         <Button>Back</Button>
       </Link>
