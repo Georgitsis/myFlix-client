@@ -4,7 +4,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const MovieView = ({
   movieList,
@@ -15,6 +15,7 @@ export const MovieView = ({
   favoriteMovies,
 }) => {
   const params = useParams();
+  const navigate = useNavigate();
 
   let movieToDisplay = "";
   for (i = 0; i < movieList.length; i++) {
@@ -97,9 +98,14 @@ export const MovieView = ({
       </Card>
       <Button onClick={buttonFunction}>{buttonText}</Button>
 
-      <Link to={"/"}>
-        <Button>Back</Button>
-      </Link>
+      <Link to={"/"}></Link>
+      <Button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Back
+      </Button>
     </>
   );
 };
