@@ -36,12 +36,15 @@ export const MainView = () => {
   const removeFromFavoritesList = (movieToRemove) => {
     let updatedUser = user;
 
-    for (i = 0; i < updatedUser.favoriteMovies.length; i++) {
+    /*for (i = 0; i < updatedUser.favoriteMovies.length; i++) {
       if (updatedUser.favoriteMovies[i] === movieToRemove) {
         delete updatedUser.favoriteMovies[i];
         break;
-      }
-    }
+      }*/
+    delete updatedUser.favoriteMovies[
+      updatedUser.favoriteMovies.indexOf(movieToRemove)
+    ];
+
     setUser(updatedUser);
     generateNewFavoriteMovies();
   };
