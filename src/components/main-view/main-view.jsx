@@ -105,7 +105,6 @@ export const MainView = () => {
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
-                        generateNewFavoriteMovies();
                       }}
                     />
                   </Col>
