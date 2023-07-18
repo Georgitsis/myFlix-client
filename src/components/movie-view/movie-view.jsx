@@ -98,7 +98,6 @@ export const MovieView = ({
       </Card>
       <Button onClick={buttonFunction}>{buttonText}</Button>
 
-      <Link to={"/"}></Link>
       <Button
         onClick={() => {
           navigate(-1);

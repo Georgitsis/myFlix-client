@@ -46977,13 +46977,6 @@ const MovieView = ({ movieList, username, token, addToFavList, removeFromFavList
                 lineNumber: 99,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                to: "/"
-            }, void 0, false, {
-                fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 101,
-                columnNumber: 7
-            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                 onClick: ()=>{
                     navigate(-1);
@@ -46991,7 +46984,7 @@ const MovieView = ({ movieList, username, token, addToFavList, removeFromFavList
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 102,
+                lineNumber: 101,
                 columnNumber: 7
             }, undefined)
         ]
