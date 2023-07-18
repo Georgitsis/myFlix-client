@@ -31,13 +31,17 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    ).then((response) => {
-      if (response.ok) {
-        alert("Signup successful");
-      } else {
-        alert("Signup failed");
-      }
-    });
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful");
+        } else {
+          alert("Signup failed");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleDeregister = () => {
@@ -50,14 +54,18 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    ).then((response) => {
-      if (response.ok) {
-        onLoggedOut();
-        alert("De-registration successful");
-      } else {
-        alert("De-registration failed");
-      }
-    });
+    )
+      .then((response) => {
+        if (response.ok) {
+          onLoggedOut();
+          alert("De-registration successful");
+        } else {
+          alert("De-registration failed");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <Form onSubmit={handleSubmit}>

@@ -61,20 +61,24 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.map((movie) => {
-          return {
-            id: movie._id,
-            title: movie.title,
-            description: movie.description,
-            imageUrl: movie.imageUrl,
-            genre: {
-              name: movie.genre.name,
-            },
-            director: {
-              name: movie.director.name,
-            },
-          };
-        });
+        const moviesFromApi = data
+          .map((movie) => {
+            return {
+              id: movie._id,
+              title: movie.title,
+              description: movie.description,
+              imageUrl: movie.imageUrl,
+              genre: {
+                name: movie.genre.name,
+              },
+              director: {
+                name: movie.director.name,
+              },
+            };
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         setMovies(moviesFromApi);
         let usersFavoriteMovies = movies.filter((m) => {
           if (user) return user.favoriteMovies.includes(m.id);

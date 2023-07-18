@@ -35,12 +35,16 @@ export const MovieView = ({
           Authorization: `Bearer ${token}`,
         },
       }
-    ).then((response) => {
-      if (response.ok) {
-        alert("Movie added to favorites List");
-        addToFavList(movieToDisplay.id);
-      } else alert("Something went wrong.");
-    });
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Movie added to favorites List");
+          addToFavList(movieToDisplay.id);
+        } else alert("Something went wrong.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleRemoveFromFavorites = () => {
@@ -53,12 +57,16 @@ export const MovieView = ({
           Authorization: `Bearer ${token}`,
         },
       }
-    ).then((response) => {
-      if (response.ok) {
-        alert("Movie removed from favorites List");
-        removeFromFavList(movieToDisplay.id);
-      } else alert("Something went wrong.");
-    });
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Movie removed from favorites List");
+          removeFromFavList(movieToDisplay.id);
+        } else alert("Something went wrong.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   let buttonFunction = handleAddToFavorites;
