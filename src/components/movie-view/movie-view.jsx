@@ -17,13 +17,15 @@ export const MovieView = ({
   const params = useParams();
   const navigate = useNavigate();
 
-  let movieToDisplay = "";
+  /*let movieToDisplay = "";
   for (i = 0; i < movieList.length; i++) {
     if (params.movieId === movieList[i].id) {
       movieToDisplay = movieList[i];
       break;
     }
-  }
+  }*/
+  let movieToDisplay = movieList.find((movie) => movie.id === params.movieId);
+  console.log(movieToDisplay);
 
   const handleAddToFavorites = () => {
     fetch(
