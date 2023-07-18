@@ -22,7 +22,6 @@ export const LoginView = ({ onLoggedIn }) => {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
-          console.log(data.user);
         } else alert(data.message);
       })
       .catch((error) => {
