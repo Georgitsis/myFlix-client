@@ -3,13 +3,14 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,14 +28,19 @@ export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-        alert("Sign-up successful");
-        window.location.reload();
-      } else {
-        alert("Sign-up failed");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Sign-up successful");
+          //window.location.reload();
+          navigate("/login");
+        } else {
+          alert("Sign-up failed");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
