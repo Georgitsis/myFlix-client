@@ -16,13 +16,13 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const data = {
+    const data = { Username: username };
+    /*const data = {
       Username: username,
       Password: password,
       email: email,
       birthDate: birthday,
-    };
+    };*/
     fetch(
       `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/update/${initialUsername}`,
       {
@@ -70,7 +70,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
       });
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form /*onSubmit={handleSubmit}*/>
       <Form.Group>
         <div className="mb-2">Username:</div>
         <InputGroup className="mb-3">
@@ -83,7 +83,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             minLength="6"
             maxLength={"20"}
           />
-          <Button type="submit" className="profile-view-update-btn">
+          <Button onClick={handleSubmit} className="profile-view-update-btn">
             &#128472;
           </Button>
         </InputGroup>
