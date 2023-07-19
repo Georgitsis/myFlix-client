@@ -18,7 +18,6 @@ export const MovieView = ({
   const navigate = useNavigate();
 
   let movieToDisplay = movieList.find((movie) => movie.id === params.movieId);
-  console.log(movieToDisplay);
 
   const handleAddToFavorites = () => {
     fetch(
