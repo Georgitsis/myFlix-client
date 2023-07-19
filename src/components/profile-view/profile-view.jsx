@@ -91,7 +91,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
         />
       </Form.Group>
       <Form.Group>
-        Email:
+        Emaillllll:
         <Form.Control
           type="email"
           value={email}
