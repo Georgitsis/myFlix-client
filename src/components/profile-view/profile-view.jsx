@@ -5,25 +5,21 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./profile-view.scss";
-import { InputGroup } from "react-bootstrap";
 
 export const ProfileView = ({ user, token, onLoggedOut }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
-  const [password, setPassword] = useState(void);
+  const [password, setPassword] = useState(null);
   const [email, setEmail] = useState(user.email);
   const [birthday, setBirthday] = useState(user.birthDate.slice(0, 10));
 
-  const handleSubmit = (dataToUpdate) => {
-    const data = dataToUpdate;
-    //event.preventDefault();
-    //const data = { Username: username };
-    /*const data = {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
       Username: username,
-      Password: password,
-      email: email,sss
+      email: email,
       birthDate: birthday,
-    };*/
+    };
     fetch(
       `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/update/${initialUsername}`,
       {
@@ -70,91 +66,83 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
         console.log(error);
       });
   };
+
   return (
-    <Form /*onSubmit={handleSubmit}*/>
-      <Form.Group>
-        <div className="mb-2">Username:</div>
-        <InputGroup className="mb-3">
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <div className="mb-1">Username:</div>
           <Form.Control
-            className="sign-up-form-control"
+            className="sign-up-form-control mb-3"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            minLength="6"
+            minLength={"6"}
             maxLength={"20"}
           />
-          <Button
-            onClick={() => {
-              handleSubmit({ Username: username });
-            }}
-            className="profile-view-update-btn"
-          >
-            &#128472;
-          </Button>
-        </InputGroup>
-      </Form.Group>
-      <Form.Group>
-        <div className="mb-2">Password:</div>
-        <InputGroup className="mb-3">
+        </Form.Group>
+
+        <Form.Group>
+          <div className="mb-1">Email:</div>
           <Form.Control
-            className="sign-up-form-control"
-            type="password"
-            placeholder="Type in old or new password"
-            onChange={(e) => setPassword(e.target.value)}
-            //required
-            minLength={8}
-          />
-          <Button onClick={() => {
-              handleSubmit({ Password: password });
-            }} className="profile-view-update-btn">
-            &#128472;
-          </Button>
-        </InputGroup>
-      </Form.Group>
-      <Form.Group>
-        <div className="mb-2">Email:</div>
-        <InputGroup className="mb-3">
-          <Form.Control
-            className="sign-up-form-control"
+            className="sign-up-form-control mb-3"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <Button onClick={() => {
-              handleSubmit({ email: email });
-            }} className="profile-view-update-btn">
-            &#128472;
-          </Button>
-        </InputGroup>
-      </Form.Group>
-      <Form.Group>
-        <div className="mb-2">Birthday:</div>
-        <InputGroup className="mb-3">
+        </Form.Group>
+        <Form.Group>
+          <div className="mb-1">Birthday:</div>
           <Form.Control
-            className="sign-up-form-control"
+            className="sign-up-form-control mb-3"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
-          <Button onClick={() => {
-              handleSubmit({ birthDate: birthday });
-            }} className="profile-view-update-btn">
-            &#128472;
-          </Button>
-        </InputGroup>
-      </Form.Group>
-      <ButtonToolbar aria-label="Toolbar with button groups">
-        <ButtonGroup>
-          <Button onClick={handleDeregister}>Deregister</Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Link to={"/"}>
-            <Button>Cancel</Button>
-          </Link>
-        </ButtonGroup>
-      </ButtonToolbar>
-    </Form>
+        </Form.Group>
+        <ButtonToolbar aria-label="Toolbar with button groups">
+          <ButtonGroup>
+            <Button type="submit">Update user</Button>
+          </ButtonGroup>
+
+          <ButtonGroup></ButtonGroup>
+        </ButtonToolbar>
+      </Form>
+      <Form className="mt-5">
+        <Form.Group>
+          <div className="mb-1">Old password:</div>
+          <Form.Control
+            className="sign-up-form-control mb-3"
+            type="password"
+            placeholder="******"
+            onChange={(e) => setPassword(e.target.value)}
+            //required
+            minLength={8}
+          />
+        </Form.Group>
+        <Form.Group>
+          <div className="mb-1">New password:</div>
+          <Form.Control
+            className="sign-up-form-control mb-3"
+            type="password"
+            placeholder="******"
+            onChange={(e) => setPassword(e.target.value)}
+            //required
+            minLength={8}
+          />
+        </Form.Group>
+        <ButtonToolbar aria-label="Toolbar with button groups">
+          <ButtonGroup>
+            <Button>Update password</Button>
+          </ButtonGroup>
+
+          <ButtonGroup></ButtonGroup>
+        </ButtonToolbar>
+      </Form>
+      <div className="mt-5">De-register User</div>
+      <Button onClick={handleDeregister}>Deregister</Button>
+    </>
   );
 };
