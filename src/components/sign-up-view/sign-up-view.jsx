@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const SignUpView = ({ goToLoginAfterSignUp }) => {
+export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -29,10 +29,10 @@ export const SignUpView = ({ goToLoginAfterSignUp }) => {
       },
     }).then((response) => {
       if (response.ok) {
-        alert("Signup successful");
+        alert("Sign-up successful");
         window.location.reload();
       } else {
-        alert("Signup failed");
+        alert("Sign-up failed");
       }
     });
   };
