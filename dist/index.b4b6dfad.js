@@ -27500,7 +27500,8 @@ const MainView = ()=>{
                             path: "/user",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                    to: "/login"
+                                    to: "/login",
+                                    replace: true
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                     md: 5,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
@@ -47212,7 +47213,7 @@ var _formDefault = parcelHelpers.interopDefault(_form);
 var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
-const SignUpView = ({ goToLoginAfterSignUp })=>{
+const SignUpView = ()=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -47234,9 +47235,9 @@ const SignUpView = ({ goToLoginAfterSignUp })=>{
             }
         }).then((response)=>{
             if (response.ok) {
-                alert("Signup successful");
+                alert("Sign-up successful");
                 window.location.reload();
-            } else alert("Signup failed");
+            } else alert("Sign-up failed");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {

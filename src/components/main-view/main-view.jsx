@@ -179,7 +179,7 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to={"/login"} /*replace*/ />
+                  <Navigate to={"/login"} replace />
                 ) : (
                   <Col md={5}>
                     <ProfileView
