@@ -13,14 +13,15 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.email);
   const [birthday, setBirthday] = useState(user.birthDate.slice(0, 10));
+  let data = {};
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = { Username: username };
+  const handleSubmit = (/*event*/) => {
+    //event.preventDefault();
+    //const data = { Username: username };
     /*const data = {
       Username: username,
       Password: password,
-      email: email,
+      email: email,sss
       birthDate: birthday,
     };*/
     fetch(
@@ -36,14 +37,19 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
     )
       .then((response) => {
         if (response.ok) {
-          alert("Sign-up successful");
+          alert("User update successful");
         } else {
-          alert("Sign-up failed");
+          alert("User update failed");
         }
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const updateUsername = () => {
+    data = { Username: username };
+    handleSubmit();
   };
 
   const handleDeregister = () => {
@@ -83,7 +89,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             minLength="6"
             maxLength={"20"}
           />
-          <Button onClick={handleSubmit} className="profile-view-update-btn">
+          <Button onClick={updateUsername} className="profile-view-update-btn">
             &#128472;
           </Button>
         </InputGroup>
