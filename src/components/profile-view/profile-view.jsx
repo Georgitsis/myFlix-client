@@ -10,12 +10,12 @@ import { InputGroup } from "react-bootstrap";
 export const ProfileView = ({ user, token, onLoggedOut }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
-  const [password, setPassword] = useState(user.Password);
+  const [password, setPassword] = useState(void);
   const [email, setEmail] = useState(user.email);
   const [birthday, setBirthday] = useState(user.birthDate.slice(0, 10));
-  let data = {};
 
-  const handleSubmit = (/*event*/) => {
+  const handleSubmit = (dataToUpdate) => {
+    const data = dataToUpdate;
     //event.preventDefault();
     //const data = { Username: username };
     /*const data = {
@@ -45,11 +45,6 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const updateUsername = () => {
-    data = { Username: username };
-    handleSubmit();
   };
 
   const handleDeregister = () => {
@@ -89,7 +84,12 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             minLength="6"
             maxLength={"20"}
           />
-          <Button onClick={updateUsername} className="profile-view-update-btn">
+          <Button
+            onClick={() => {
+              handleSubmit({ Username: username });
+            }}
+            className="profile-view-update-btn"
+          >
             &#128472;
           </Button>
         </InputGroup>
@@ -102,10 +102,12 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             type="password"
             placeholder="Type in old or new password"
             onChange={(e) => setPassword(e.target.value)}
-            required
+            //required
             minLength={8}
           />
-          <Button type="submit" className="profile-view-update-btn">
+          <Button onClick={() => {
+              handleSubmit({ Password: password });
+            }} className="profile-view-update-btn">
             &#128472;
           </Button>
         </InputGroup>
@@ -120,7 +122,9 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <Button type="submit" className="profile-view-update-btn">
+          <Button onClick={() => {
+              handleSubmit({ email: email });
+            }} className="profile-view-update-btn">
             &#128472;
           </Button>
         </InputGroup>
@@ -134,7 +138,9 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
-          <Button type="submit" className="profile-view-update-btn">
+          <Button onClick={() => {
+              handleSubmit({ birthDate: birthday });
+            }} className="profile-view-update-btn">
             &#128472;
           </Button>
         </InputGroup>
