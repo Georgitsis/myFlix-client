@@ -4,6 +4,8 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import "./profile-view.scss";
+import { InputGroup } from "react-bootstrap";
 
 export const ProfileView = ({ user, token, onLoggedOut }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
@@ -34,9 +36,9 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
     )
       .then((response) => {
         if (response.ok) {
-          alert("Signup successful");
+          alert("Sign-up successful");
         } else {
-          alert("Signup failed");
+          alert("Sign-up failed");
         }
       })
       .catch((error) => {
@@ -70,54 +72,75 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        Username:
-        <Form.Control
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength="6"
-          maxLength={"20"}
-        />
+        <div className="mb-2">Username:</div>
+        <InputGroup className="mb-3">
+          <Form.Control
+            className="sign-up-form-control"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            minLength="6"
+            maxLength={"20"}
+          />
+          <Button type="submit" className="profile-view-update-btn">
+            &#128472;
+          </Button>
+        </InputGroup>
       </Form.Group>
       <Form.Group>
-        Password:
-        <Form.Control
-          type="password"
-          placeholder="Type in old or new password"
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          minLength={8}
-        />
+        <div className="mb-2">Password:</div>
+        <InputGroup className="mb-3">
+          <Form.Control
+            className="sign-up-form-control"
+            type="password"
+            placeholder="Type in old or new password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            minLength={8}
+          />
+          <Button type="submit" className="profile-view-update-btn">
+            &#128472;
+          </Button>
+        </InputGroup>
       </Form.Group>
       <Form.Group>
-        Emaillllll:
-        <Form.Control
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <div className="mb-2">Email:</div>
+        <InputGroup className="mb-3">
+          <Form.Control
+            className="sign-up-form-control"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <Button type="submit" className="profile-view-update-btn">
+            &#128472;
+          </Button>
+        </InputGroup>
       </Form.Group>
       <Form.Group>
-        Birthday:
-        <Form.Control
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-          required
-        />
+        <div className="mb-2">Birthday:</div>
+        <InputGroup className="mb-3">
+          <Form.Control
+            className="sign-up-form-control"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            required
+          />
+          <Button type="submit" className="profile-view-update-btn">
+            &#128472;
+          </Button>
+        </InputGroup>
       </Form.Group>
       <ButtonToolbar aria-label="Toolbar with button groups">
         <ButtonGroup>
-          <Button type="submit">Update user data</Button>
+          <Button onClick={handleDeregister}>Deregister</Button>
         </ButtonGroup>
         <ButtonGroup>
           <Link to={"/"}>
             <Button>Cancel</Button>
           </Link>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button onClick={handleDeregister}>Deregister</Button>
         </ButtonGroup>
       </ButtonToolbar>
     </Form>
