@@ -41,12 +41,13 @@ export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
         }
       })
       .then(() => {
-        alert("it updated");
+        console.log(user);
         user.Username = username;
         user.email = email;
         user.birthDate = birthday;
+        console.log(user);
         updateUser({ user });
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -169,7 +170,7 @@ export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
           />
         </Form.Group>
         <Form.Group>
-          <div className="mb-1">Repeat new passworddd:</div>
+          <div className="mb-1">Repeat new password:</div>
           <Form.Control
             className="sign-up-form-control mb-3"
             type="password"
