@@ -7,7 +7,7 @@ import { useState } from "react";
 import "./navigation-bar.scss";
 
 export const NavigationBar = ({ user, onLoggedOut, updateSearchItem }) => {
-  navigate = useNavigate();
+  const navigate = useNavigate();
   let searchItem = null;
   return (
     <Navbar className="navigation-bar mb-5" fixed="top" expand="md">
