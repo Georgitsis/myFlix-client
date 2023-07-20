@@ -48,7 +48,7 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
   const handlePasswordChange = (event) => {
     event.preventDefault();
     if (newPassword !== repeatedPassword) {
-      alert("New password and repeated password are not the same!");
+      alert("New password and repeated password are not the same!"); //Warning
     } else {
       const data = {
         Password: newPassword,
