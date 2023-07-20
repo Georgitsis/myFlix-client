@@ -9,10 +9,10 @@ import "./profile-view.scss";
 export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
+  const [email, setEmail] = useState(user.email);
+  const [birthday, setBirthday] = useState(user.birthDate.slice(0, 10)); //slice(0, 10)
   const [repeatedPassword, setRepeatedPassword] = useState(null);
   const [newPassword, setNewPassword] = useState(null);
-  const [email, setEmail] = useState(user.email);
-  const [birthday, setBirthday] = useState(user.birthDate.slice(0, 10));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,12 +41,17 @@ export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
         }
       })
       .then(() => {
-        console.log(user);
-        user.Username = username;
+        //console.log(user);
+        /*user.Username = username;
         user.email = email;
         user.birthDate = birthday;
-        console.log(user);
-        updateUser({ user });
+        console.log(user);*/
+        updateUser({
+          Username: username,
+          email: email,
+          birthDate: birthday,
+          favoriteMovies: user.favoriteMovies,
+        });
         // window.location.reload();
       })
       .catch((error) => {

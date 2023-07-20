@@ -79,6 +79,7 @@ export const MainView = () => {
           if (user) return user.favoriteMovies.includes(m.id);
         });
         setFavoriteMovies(usersFavoriteMovies);
+        console.log(favoriteMovies);
       })
       .catch((error) => {
         console.log(error);
@@ -107,6 +108,7 @@ export const MainView = () => {
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
+                        console.log(user);
                       }}
                     />
                   </Col>
@@ -189,6 +191,7 @@ export const MainView = () => {
                         handleOnLoggedOut();
                       }}
                       updateUser={(updatedUser) => {
+                        console.log(updatedUser);
                         setUser(updatedUser);
                       }}
                     />
