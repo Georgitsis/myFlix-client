@@ -188,6 +188,9 @@ export const MainView = () => {
                       onLoggedOut={() => {
                         handleOnLoggedOut();
                       }}
+                      updateUser={(updatedUser) => {
+                        setUser(updatedUser);
+                      }}
                     />
                   </Col>
                 )}

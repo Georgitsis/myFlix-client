@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./profile-view.scss";
 
-export const ProfileView = ({ user, token, onLoggedOut }) => {
+export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);
   const [username, setUsername] = useState(user.Username);
   const [repeatedPassword, setRepeatedPassword] = useState(null);
@@ -41,6 +41,11 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
         }
       })
       .then(() => {
+        alert("it updated");
+        user.Username = username;
+        user.email = email;
+        user.birthDate = birthday;
+        updateUser({ user });
         window.location.reload();
       })
       .catch((error) => {
