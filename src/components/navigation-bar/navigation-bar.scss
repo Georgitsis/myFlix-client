@@ -1,0 +1,28 @@
+$netflix-red: #db0000;
+
+.navigation-bar {
+   background-color: $netflix-red;
+   color: #fff;
+   //position: fixed;
+
+   * {
+      background-color: inherit;
+      color: inherit;
+   }
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+   color: #000;
+   background-color: #db0000;
+}
+
+.search-field {
+   width: auto;
+}
+
+.search-field-button {
+   margin: 0;
+   border-color: #fff;
+
+}

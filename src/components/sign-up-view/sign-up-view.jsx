@@ -3,13 +3,14 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export const SignUpView = ({ offSignUp }) => {
+export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,22 +22,25 @@ export const SignUpView = ({ offSignUp }) => {
       birthDate: birthday,
     };
 
-    //console.log(data);
     fetch("https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-        alert("Signup successful");
-        offSignUp(false);
-        window.location.reload();
-      } else {
-        alert("Signup failed");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Sign-up successful");
+          //window.location.reload();
+          navigate("/login");
+        } else {
+          alert("Sign-up failed");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

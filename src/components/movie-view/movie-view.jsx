@@ -1,28 +1,81 @@
 import "./movie-view.scss";
 import PropTypes from "prop-types";
 import React from "react";
-import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export const MovieView = ({ movieList }) => {
+export const MovieView = ({
+  movieList,
+  username,
+  token,
+  addToFavList,
+  removeFromFavList,
+  favoriteMovies,
+}) => {
   const params = useParams();
-  console.log(movieList);
-  let movieToDisplay = "";
-  for (i = 0; i < movieList.length; i++) {
-    if (params.movieId === movieList[i].id) {
-      movieToDisplay = movieList[i];
-      console.log(i);
+  const navigate = useNavigate();
+
+  let movieToDisplay = movieList.find((movie) => movie.id === params.movieId);
+
+  const handleAddToFavorites = () => {
+    fetch(
+      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/${username}/favorites/${movieToDisplay.id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Movie added to favorites List");
+          addToFavList(movieToDisplay.id);
+        } else alert("Something went wrong.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleRemoveFromFavorites = () => {
+    fetch(
+      `https://fierce-meadow-39793-bd539c2b94d7.herokuapp.com/users/${username}/favorites/${movieToDisplay.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Movie removed from favorites List");
+          removeFromFavList(movieToDisplay.id);
+        } else alert("Something went wrong.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  let buttonFunction = handleAddToFavorites;
+  let buttonText = "Add to favorites";
+  for (i = 0; i < favoriteMovies.length; i++) {
+    if (params.movieId === favoriteMovies[i].id) {
+      buttonFunction = handleRemoveFromFavorites;
+      buttonText = "Remove from favorites";
       break;
     }
   }
 
-  console.log(movieToDisplay);
   return (
     <>
-      <Card>
+      <Card className="movie-view-card">
         <Card.Img
           className="movie-view-card-img"
           src={movieToDisplay.imageUrl}
@@ -45,22 +98,47 @@ export const MovieView = ({ movieList }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Link to={"/"}>
-        <Button>Back</Button>
-      </Link>
+      <Button onClick={buttonFunction}>{buttonText}</Button>
+
+      <Button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Back
+      </Button>
     </>
   );
 };
 MovieView.propTypes = {
-  movieToDisplay: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    description: PropTypes.string,
-    genre: PropTypes.shape({
-      name: PropTypes.string,
-    }),
-    director: PropTypes.shape({
-      name: PropTypes.string,
-    }),
-  }).isRequired,
+  movieList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      genre: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+      director: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    })
+  ),
+  username: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  addToFavList: PropTypes.func.isRequired,
+  removeFromFavList: PropTypes.func.isRequired,
+  favoriteMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      genre: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+      director: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    })
+  ),
 };

@@ -3,23 +3,60 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { useParams } from "react-router";
 import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+} from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
-  let [selectedMovie, setSelectedMovie] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  let [signUp, setSignUp] = useState(null);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [searchItem, setSearchItem] = useState([]);
+
+  const handleOnLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
+
+  const addToFavoritesList = (movieToAdd) => {
+    let updatedUser = user;
+    updatedUser.favoriteMovies.push(movieToAdd);
+    setUser(updatedUser);
+    generateNewFavoriteMovies();
+  };
+
+  const removeFromFavoritesList = (movieToRemove) => {
+    let updatedUser = user;
+
+    delete updatedUser.favoriteMovies[
+      updatedUser.favoriteMovies.indexOf(movieToRemove)
+    ];
+
+    setUser(updatedUser);
+    generateNewFavoriteMovies();
+  };
+
+  const generateNewFavoriteMovies = () => {
+    let usersFavoriteMovies = movies.filter((m) => {
+      return user.favoriteMovies.includes(m.id);
+    });
+    setFavoriteMovies(usersFavoriteMovies);
+  };
 
   //fetches a list of movies from the given url
   useEffect(() => {
@@ -43,25 +80,43 @@ export const MainView = () => {
             },
           };
         });
+
         setMovies(moviesFromApi);
+        let usersFavoriteMovies = movies.filter((m) => {
+          if (user) return user.favoriteMovies.includes(m.id);
+        });
+        setFavoriteMovies(usersFavoriteMovies);
+        console.log(favoriteMovies);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [token]);
 
   return (
     <BrowserRouter>
       <Row className="justify-content-md-center">
+        <NavigationBar
+          user={user}
+          onLoggedOut={() => {
+            handleOnLoggedOut();
+          }}
+          updateSearchItem={(searchItem) => {
+            setSearchItem(searchItem);
+          }}
+        />
         <Routes>
           <Route
             path="/login"
             element={
               <>
-                {storedUser ? (
+                {user ? (
                   <Navigate to="/" />
                 ) : (
                   <Col md={4}>
                     <LoginView
-                      onLoggedIn={(username, token) => {
-                        setUser(username);
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
                         setToken(token);
                       }}
                     />
@@ -74,7 +129,7 @@ export const MainView = () => {
             path="/sign-up"
             element={
               <>
-                {storedUser ? (
+                {user ? (
                   <Navigate to="/" replace />
                 ) : (
                   <Col md={8}>
@@ -92,7 +147,19 @@ export const MainView = () => {
                   <Navigate to={"/login"} replace />
                 ) : (
                   <Col md={6}>
-                    <MovieView className="mb-3" movieList={movies} />
+                    <MovieView
+                      className="mb-3"
+                      movieList={movies}
+                      username={user.Username}
+                      token={token}
+                      favoriteMovies={favoriteMovies}
+                      addToFavList={(addedMovie) => {
+                        addToFavoritesList(addedMovie);
+                      }}
+                      removeFromFavList={(removedMovie) => {
+                        removeFromFavoritesList(removedMovie);
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -113,16 +180,76 @@ export const MainView = () => {
                         </Col>
                       );
                     })}
-                    <Button
-                      className="logout-btn primary"
-                      onClick={() => {
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to={"/login"} replace />
+                ) : (
+                  <Col md={5}>
+                    <ProfileView
+                      user={user}
+                      token={token}
+                      onLoggedOut={() => {
+                        handleOnLoggedOut();
                       }}
-                    >
-                      Logout
-                    </Button>
+                      updateUser={(updatedUser) => {
+                        setUser(updatedUser);
+                      }}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to={"/login"} />
+                ) : (
+                  <>
+                    {favoriteMovies.map((movie) => {
+                      return (
+                        <Col className="mb-3" md={4}>
+                          <MovieCard key={movie.id} movieData={movie} />
+                        </Col>
+                      );
+                    })}
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/search/:searchItem"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to={"/login"} />
+                ) : (
+                  <>
+                    {
+                      //console.log(params.searchItem)
+                      movies
+                        .filter((m) => {
+                          return m.title.includes(searchItem);
+                        })
+                        .map((movie) => {
+                          return (
+                            <Col className="mb-3" md={4}>
+                              <MovieCard key={movie.id} movieData={movie} />
+                            </Col>
+                          );
+                        })
+                    }
                   </>
                 )}
               </>

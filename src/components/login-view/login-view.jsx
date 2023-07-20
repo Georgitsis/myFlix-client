@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
-export const LoginView = ({ onLoggedIn, onSignUp }) => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
@@ -18,11 +18,10 @@ export const LoginView = ({ onLoggedIn, onSignUp }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          onLoggedIn(data.user.Username, data.token);
+          onLoggedIn(data.user, data.token);
         } else alert(data.message);
       })
       .catch((error) => {

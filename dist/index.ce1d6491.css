@@ -13195,7 +13195,7 @@ textarea.form-control-lg {
 }
 
 #root {
-  padding-top: 40px;
+  padding-top: 75px;
 }
 
 .movie-card-link {
@@ -13217,13 +13217,43 @@ textarea.form-control-lg {
 }
 
 .movie-view-card-img {
+  border-radius: 2px;
   max-width: 20vw;
+  padding: 10px;
 }
 
 .logout-btn {
   width: auto;
   position: fixed;
   right: 0;
+}
+
+.navigation-bar {
+  color: #fff;
+  background-color: #db0000;
+}
+
+.navigation-bar * {
+  background-color: inherit;
+  color: inherit;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #000;
+  background-color: #db0000;
+}
+
+.search-field {
+  width: auto;
+}
+
+.search-field-button {
+  border-color: #fff;
+  margin: 0;
+}
+
+.profile-view-update-btn {
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
