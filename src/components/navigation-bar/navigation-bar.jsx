@@ -14,13 +14,17 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Form.Control
-            type="text"
-            placeholder="Search"
-            className="me-2 search-field"
-            aria-label="Search"
-          />
-          <Button className="search-field-button">Search</Button>
+          {user && (
+            <>
+              <Form.Control
+                type="text"
+                placeholder="Search"
+                className="me-2 search-field"
+                aria-label="Search"
+              />
+              <Button className="search-field-button">Search</Button>
+            </>
+          )}
 
           <Nav className="ms-auto">
             {!user && (
