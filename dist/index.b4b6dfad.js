@@ -47802,7 +47802,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "mb-1",
-                                children: "Repeat new passwordd:"
+                                children: "Repeat new passworddd:"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
                                 lineNumber: 172,
