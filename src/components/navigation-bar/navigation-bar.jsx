@@ -1,11 +1,14 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useState } from "react";
 import "./navigation-bar.scss";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, updateSearchItem }) => {
+  navigate = useNavigate();
+  let searchItem = null;
   return (
     <Navbar className="navigation-bar mb-5" fixed="top" expand="md">
       <Container>
@@ -18,11 +21,20 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             <>
               <Form.Control
                 type="text"
-                placeholder="Search"
+                placeholder="Search for a movie title"
                 className="me-2 search-field"
                 aria-label="Search"
+                onChange={(e) => (searchItem = e.target.value)}
               />
-              <Button className="search-field-button">Search</Button>
+              <Button
+                onClick={() => {
+                  updateSearchItem(searchItem);
+                  navigate(`/search/${searchItem}`);
+                }}
+                className="search-field-button"
+              >
+                Search
+              </Button>
             </>
           )}
 

@@ -4,21 +4,28 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { useParams } from "react-router";
 import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+} from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [searchItem, setSearchItem] = useState([]);
 
   const handleOnLoggedOut = () => {
     setUser(null);
@@ -94,6 +101,9 @@ export const MainView = () => {
           onLoggedOut={() => {
             handleOnLoggedOut();
           }}
+          updateSearchItem={(searchItem) => {
+            setSearchItem(searchItem);
+          }}
         />
         <Routes>
           <Route
@@ -108,7 +118,6 @@ export const MainView = () => {
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
-                        console.log(user);
                       }}
                     />
                   </Col>
@@ -191,7 +200,6 @@ export const MainView = () => {
                         handleOnLoggedOut();
                       }}
                       updateUser={(updatedUser) => {
-                        console.log(updatedUser);
                         setUser(updatedUser);
                       }}
                     />
@@ -215,6 +223,33 @@ export const MainView = () => {
                         </Col>
                       );
                     })}
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/search/:searchItem"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to={"/login"} />
+                ) : (
+                  <>
+                    {
+                      //console.log(params.searchItem)
+                      movies
+                        .filter((m) => {
+                          return m.title.includes(searchItem);
+                        })
+                        .map((movie) => {
+                          return (
+                            <Col className="mb-3" md={4}>
+                              <MovieCard key={movie.id} movieData={movie} />
+                            </Col>
+                          );
+                        })
+                    }
                   </>
                 )}
               </>

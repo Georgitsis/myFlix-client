@@ -2,7 +2,6 @@ import "./movie-card.scss";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 export const MovieCard = ({ movieData }) => {
   return (
     <Link
