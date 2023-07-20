@@ -169,7 +169,7 @@ export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
           />
         </Form.Group>
         <Form.Group>
-          <div className="mb-1">Repeat new password:</div>
+          <div className="mb-1">Repeat new passworddd:</div>
           <Form.Control
             className="sign-up-form-control mb-3"
             type="password"
