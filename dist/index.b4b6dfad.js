@@ -47571,7 +47571,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
     const [initialUsername, setInitialUsername] = (0, _react.useState)(user.Username);
     const [username, setUsername] = (0, _react.useState)(user.Username);
     const [email, setEmail] = (0, _react.useState)(user.email);
-    const [birthday, setBirthday] = (0, _react.useState)(user.birthDate.slice(0, 10)); //slice(0, 10)
+    const [birthday, setBirthday] = (0, _react.useState)(user.birthDate.slice(0, 10));
     const [repeatedPassword, setRepeatedPassword] = (0, _react.useState)(null);
     const [newPassword, setNewPassword] = (0, _react.useState)(null);
     const handleSubmit = (event)=>{
@@ -47594,25 +47594,20 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                 setInitialUsername(username);
             } else alert("User update failed");
         }).then(()=>{
-            //console.log(user);
-            /*user.Username = username;
-        user.email = email;
-        user.birthDate = birthday;
-        console.log(user);*/ updateUser({
+            updateUser({
                 Username: username,
                 email: email,
                 birthDate: birthday,
                 favoriteMovies: user.favoriteMovies
             });
-        // window.location.reload();
         }).catch((error)=>{
             console.log(error);
         });
     };
     const handlePasswordChange = (event)=>{
         event.preventDefault();
-        if (newPassword !== repeatedPassword) alert("New password and repeated password are not the same!"); //Warning
-        else {
+        if (newPassword !== repeatedPassword) {
+            alert("New password and repeated password are not the same!");
             const data = {
                 Password: newPassword
             };
@@ -47663,7 +47658,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 children: "Username:"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 127,
+                                lineNumber: 120,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47676,13 +47671,13 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 maxLength: "20"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 128,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 126,
+                        lineNumber: 119,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47692,7 +47687,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 children: "Email:"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 139,
+                                lineNumber: 132,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47703,13 +47698,13 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 140,
+                                lineNumber: 133,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 138,
+                        lineNumber: 131,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47719,7 +47714,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 children: "Birthday:"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 149,
+                                lineNumber: 142,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47729,13 +47724,13 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 150,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 148,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonToolbarDefault.default), {
@@ -47747,29 +47742,29 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                     children: "Update user"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 159,
+                                    lineNumber: 152,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 158,
+                                lineNumber: 151,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonGroupDefault.default), {}, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 162,
+                                lineNumber: 155,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 157,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 125,
+                lineNumber: 118,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
@@ -47783,7 +47778,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 children: "New password:"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 167,
+                                lineNumber: 160,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47795,13 +47790,13 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 minLength: 8
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 168,
+                                lineNumber: 161,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 166,
+                        lineNumber: 159,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47811,7 +47806,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 children: "Repeat new password:"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 178,
+                                lineNumber: 171,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47823,13 +47818,13 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                                 minLength: 8
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 179,
+                                lineNumber: 172,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 177,
+                        lineNumber: 170,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonToolbarDefault.default), {
@@ -47839,18 +47834,18 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                             children: "Update password"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 189,
+                            lineNumber: 182,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 188,
+                        lineNumber: 181,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 165,
+                lineNumber: 158,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -47858,7 +47853,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                 children: "De-register User"
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 192,
+                lineNumber: 185,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -47866,7 +47861,7 @@ const ProfileView = ({ user, token, onLoggedOut, updateUser })=>{
                 children: "Deregister"
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 193,
+                lineNumber: 186,
                 columnNumber: 7
             }, undefined)
         ]
