@@ -13243,6 +13243,15 @@ textarea.form-control-lg {
   background-color: #db0000;
 }
 
+.search-field {
+  width: auto;
+}
+
+.search-field-button {
+  border-color: #fff;
+  margin: 0;
+}
+
 .profile-view-update-btn {
   margin: 0;
 }

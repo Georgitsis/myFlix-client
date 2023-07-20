@@ -1,6 +1,8 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import "./navigation-bar.scss";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
@@ -12,6 +14,14 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            className="me-2 search-field"
+            aria-label="Search"
+          />
+          <Button className="search-field-button">Search</Button>
+
           <Nav className="ms-auto">
             {!user && (
               <>
