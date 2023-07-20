@@ -40,6 +40,9 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
           alert("User update failed");
         }
       })
+      .then(() => {
+        window.location.reload();
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -71,12 +74,15 @@ export const ProfileView = ({ user, token, onLoggedOut }) => {
             alert("Password update failed");
           }
         })
+        .then(() => {
+          setNewPassword(null);
+          setRepeatedPassword(null);
+          window.location.reload();
+        })
         .catch((error) => {
           console.log(error);
         });
     }
-    setNewPassword(null);
-    setRepeatedPassword(null);
   };
 
   const handleDeregister = () => {
