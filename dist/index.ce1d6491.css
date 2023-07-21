@@ -13208,12 +13208,6 @@ textarea.form-control-lg {
   text-decoration: none;
 }
 
-.movie-card-link:hover {
-  cursor: pointer;
-  border-color: #fff;
-  box-shadow: 0 0 10px 2px #fff;
-}
-
 .movie-card {
   padding: 10px;
 }
@@ -13222,6 +13216,12 @@ textarea.form-control-lg {
   cursor: pointer;
   border-color: #fff;
   box-shadow: 0 0 10px 2px #fff;
+}
+
+.movie-card:active {
+  cursor: pointer;
+  border-color: #db0000;
+  box-shadow: 0 0 13px 2px #db0000;
 }
 
 .movie-card .movie-card-img {
