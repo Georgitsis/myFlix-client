@@ -1,5 +1,12 @@
 .movie-card-link {
    text-decoration: none;
+
+   &:hover {
+      border-color: #fff;
+      box-shadow: 0px 0px 10px 2px #fff;
+      cursor: pointer;
+   }
+
 }
 
 .movie-card {
@@ -8,8 +15,8 @@
    //text-decoration: none;
 
    &:hover {
-      box-shadow: 0 0 8px #fff;
-      border-color: #fff; //$secondary-netflix-red;
+      border-color: #fff;
+      box-shadow: 0px 0px 10px 2px #fff;
       cursor: pointer;
    }
 

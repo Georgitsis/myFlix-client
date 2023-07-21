@@ -2266,9 +2266,10 @@ progress {
 
 .form-control:focus {
   color: var(--bs-body-color);
+  box-shadow: #fff;
   background-color: #564d4d;
   border-color: #ed8080;
-  box-shadow: 0 0 15px #fff;
+  outline: 0;
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -13194,12 +13195,23 @@ textarea.form-control-lg {
   }
 }
 
+.form-control:focus {
+  border-color: #fff;
+  box-shadow: 0 0 10px 2px #fff;
+}
+
 #root {
   padding-top: 75px;
 }
 
 .movie-card-link {
   text-decoration: none;
+}
+
+.movie-card-link:hover {
+  cursor: pointer;
+  border-color: #fff;
+  box-shadow: 0 0 10px 2px #fff;
 }
 
 .movie-card {
@@ -13209,7 +13221,7 @@ textarea.form-control-lg {
 .movie-card:hover {
   cursor: pointer;
   border-color: #fff;
-  box-shadow: 0 0 8px #fff;
+  box-shadow: 0 0 10px 2px #fff;
 }
 
 .movie-card .movie-card-img {
@@ -13220,20 +13232,6 @@ textarea.form-control-lg {
   border-radius: 2px;
   max-width: 20vw;
   padding: 10px;
-}
-
-Form.Control {
-  box-shadow: 0 0 3px #fff;
-}
-
-Form.Control {
-  box-shadow: 0 0 3px #fff;
-}
-
-.logout-btn {
-  width: auto;
-  position: fixed;
-  right: 0;
 }
 
 .navigation-bar {
@@ -13257,10 +13255,6 @@ Form.Control {
 
 .search-field-button {
   border-color: #fff;
-  margin: 0;
-}
-
-.profile-view-update-btn {
   margin: 0;
 }
 

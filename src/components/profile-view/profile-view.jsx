@@ -2,9 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import "./profile-view.scss";
 
 export const ProfileView = ({ user, token, onLoggedOut, updateUser }) => {
   const [initialUsername, setInitialUsername] = useState(user.Username);

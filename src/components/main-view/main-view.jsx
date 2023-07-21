@@ -4,7 +4,6 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 

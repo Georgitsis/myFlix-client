@@ -4,7 +4,6 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./sign-up-view.scss";
 
 export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
   const [username, setUsername] = useState("");
