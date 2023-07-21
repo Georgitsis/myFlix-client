@@ -18,7 +18,7 @@ export const MovieView = ({
   const navigate = useNavigate();
   console.log("MovieView.jsx params.movieId: " + params.movieId);
   let movieToDisplay = movieList.find((movie) => movie.id === params.movieId);
-  console.log("MovieView.jsx movieToDisplay: " + movieToDisplay);
+  console.log("MovieView.jsx movieToDisplay: " + movieToDisplay.id);
 
   const handleAddToFavorites = () => {
     fetch(
@@ -66,7 +66,8 @@ export const MovieView = ({
 
   let buttonFunction = handleAddToFavorites;
   let buttonText = "Add to favorites";
-  for (i = 0; i < favoriteMovies.length; i++) {
+
+  for (let i = 0; i < favoriteMovies.length; i++) {
     if (params.movieId === favoriteMovies[i].id) {
       buttonFunction = handleRemoveFromFavorites;
       buttonText = "Remove from favorites";
