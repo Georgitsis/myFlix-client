@@ -4,7 +4,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const MovieView = ({
   movieList,
@@ -16,8 +16,9 @@ export const MovieView = ({
 }) => {
   const params = useParams();
   const navigate = useNavigate();
-
+  console.log("MovieView.jsx params.movieId: " + params.movieId);
   let movieToDisplay = movieList.find((movie) => movie.id === params.movieId);
+  console.log("MovieView.jsx movieToDisplay: " + movieToDisplay);
 
   const handleAddToFavorites = () => {
     fetch(
