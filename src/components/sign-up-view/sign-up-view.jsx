@@ -54,6 +54,7 @@ export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
           required
           minLength="6"
           maxLength={"20"}
+          className="sign-up-form-control"
         />
       </Form.Group>
       <Form.Group>
