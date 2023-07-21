@@ -4,18 +4,11 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { useParams } from "react-router";
 import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
@@ -86,7 +79,6 @@ export const MainView = () => {
           if (user) return user.favoriteMovies.includes(m.id);
         });
         setFavoriteMovies(usersFavoriteMovies);
-        console.log(favoriteMovies);
       })
       .catch((error) => {
         console.log(error);

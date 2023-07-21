@@ -13222,6 +13222,14 @@ textarea.form-control-lg {
   padding: 10px;
 }
 
+Form.Control {
+  box-shadow: 0 0 3px #fff;
+}
+
+Form.Control {
+  box-shadow: 0 0 3px #fff;
+}
+
 .logout-btn {
   width: auto;
   position: fixed;

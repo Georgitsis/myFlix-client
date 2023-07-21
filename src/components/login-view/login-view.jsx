@@ -3,6 +3,7 @@ import { ButtonGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import "./login-view.scss";
 import { Link } from "react-router-dom";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");

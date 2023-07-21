@@ -4,6 +4,7 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./sign-up-view.scss";
 
 export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
   const [username, setUsername] = useState("");
@@ -32,7 +33,6 @@ export const SignUpView = (/*{ goToLoginAfterSignUp }*/) => {
       .then((response) => {
         if (response.ok) {
           alert("Sign-up successful");
-          //window.location.reload();
           navigate("/login");
         } else {
           alert("Sign-up failed");
