@@ -72,10 +72,9 @@ export const MainView = () => {
             },
           };
         });
-
         setMovies(moviesFromApi);
-        let usersFavoriteMovies = movies.filter((m) => {
-          if (user) return user.favoriteMovies.includes(m.id);
+        let usersFavoriteMovies = moviesFromApi.filter((m) => {
+          return user.favoriteMovies.includes(m.id);
         });
         setFavoriteMovies(usersFavoriteMovies);
       })
@@ -227,20 +226,17 @@ export const MainView = () => {
                   <Navigate to={"/login"} />
                 ) : (
                   <>
-                    {
-                      //console.log(params.searchItem)
-                      movies
-                        .filter((m) => {
-                          return m.title.includes(searchItem);
-                        })
-                        .map((movie) => {
-                          return (
-                            <Col className="mb-3" md={4}>
-                              <MovieCard key={movie.id} movieData={movie} />
-                            </Col>
-                          );
-                        })
-                    }
+                    {movies
+                      .filter((m) => {
+                        return m.title.includes(searchItem);
+                      })
+                      .map((movie) => {
+                        return (
+                          <Col className="mb-3" md={4}>
+                            <MovieCard key={movie.id} movieData={movie} />
+                          </Col>
+                        );
+                      })}
                   </>
                 )}
               </>
